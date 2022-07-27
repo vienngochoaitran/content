@@ -14,7 +14,7 @@ was expected, but something else was provided. This might be a simple typo.
 
 ## Message
 
-```js
+```
 SyntaxError: expected expression, got "x"
 SyntaxError: expected property name, got "x"
 SyntaxError: expected target, got "x"
@@ -42,7 +42,7 @@ For example, when chaining expressions, trailing commas are not allowed.
 for (let i = 0; i < 5,; ++i) {
   console.log(i);
 }
-// SyntaxError: expected expression, got ')'
+// Uncaught SyntaxError: expected expression, got ';'
 ```
 
 Correct would be omitting the comma or adding another expression:

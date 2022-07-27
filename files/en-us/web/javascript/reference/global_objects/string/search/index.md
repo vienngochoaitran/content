@@ -8,6 +8,7 @@ tags:
   - Reference
   - Regular Expressions
   - String
+  - Polyfill
 browser-compat: javascript.builtins.String.search
 ---
 {{JSRef}}
@@ -27,8 +28,7 @@ search(regexp)
 
 - `regexp`
 
-  - : A [regular
-    expression](/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) object.
+  - : A [regular expression](/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) object.
 
     If a non-RegExp object `regexp` is passed, it is implicitly
     converted to a {{jsxref("RegExp")}} with `new RegExp(regexp)`.
@@ -74,7 +74,7 @@ console.log(str.search(reDot)) // returns -1 cannot find '.' dot punctuation
 
 ## See also
 
-- [Using regular
-  expressions in JavaScript](/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [Polyfill of `String.prototype.search` in `core-js` with fixes and implementation of modern behavior like `Symbol.search` support](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
+- [Using regular expressions in JavaScript](/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 - {{jsxref("String.prototype.match()")}}
 - {{jsxref("RegExp.prototype.exec()")}}

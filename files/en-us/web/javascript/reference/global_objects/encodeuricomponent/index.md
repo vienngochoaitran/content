@@ -43,14 +43,13 @@ Not Escaped:
     A-Z a-z 0-9 - _ . ! ~ * ' ( )
 ```
 
-`encodeURIComponent()` differs from **`encodeURI`**
-as follows:
+`encodeURIComponent()` differs from {{jsxref("encodeURI", "encodeURI()")}} as follows:
 
 ```js
-var set1 = ";,/?:@&=+$";  // Reserved Characters
-var set2 = "-_.!~*'()";   // Unescaped Characters
-var set3 = "#";           // Number Sign
-var set4 = "ABC abc 123"; // Alphanumeric Characters + Space
+const set1 = ";,/?:@&=+$";  // Reserved Characters
+const set2 = "-_.!~*'()";   // Unescaped Characters
+const set3 = "#";           // Number Sign
+const set4 = "ABC abc 123"; // Alphanumeric Characters + Space
 
 console.log(encodeURI(set1)); // ;,/?:@&=+$
 console.log(encodeURI(set2)); // -_.!~*'()
@@ -87,7 +86,7 @@ For example, if a user writes `Jack & Jill`, the text may get encoded as
 ampersand could be interpreted on the server as the start of a new field and jeopardize
 the integrity of the data.
 
-For [`application/x-www-form-urlencoded`](https://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#application/x-www-form-urlencoded-encoding-algorithm), spaces are to be replaced by `+`, so one may wish to follow a `encodeURIComponent()` replacement with an additional replacement of `%20` with `+`.
+For [`application/x-www-form-urlencoded`](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#application/x-www-form-urlencoded-encoding-algorithm), spaces are to be replaced by `+`, so one may wish to follow a `encodeURIComponent()` replacement with an additional replacement of `%20` with `+`.
 
 To be more stringent in adhering to {{rfc("3986")}} (which reserves !, ', (, ),
 and \*), even though these characters have no formalized URI delimiting uses, the
@@ -110,8 +109,8 @@ The following example provides the special encoding required within UTF-8
 parameters (e.g., UTF-8 filenames):
 
 ```js
-var fileName = 'my file(2).txt';
-var header = "Content-Disposition: attachment; filename*=UTF-8''"
+const fileName = 'my file(2).txt';
+const header = "Content-Disposition: attachment; filename*=UTF-8''"
              + encodeRFC5987ValueChars(fileName);
 
 console.log(header);
@@ -133,7 +132,7 @@ function encodeRFC5987ValueChars2(str) {
   return encodeURIComponent(str).
     // Note that although RFC3986 reserves "!", RFC5987 does not,
     // so we do not need to escape it
-    replace(/['()*]/g, c => "%" + c.charCodeAt(0).toString(16)). // i.e., %27 %28 %29 %2a (Note that valid encoding of "*" is %2A
+    replace(/['()*]/g, (c) => "%" + c.charCodeAt(0).toString(16)). // i.e., %27 %28 %29 %2a (Note that valid encoding of "*" is %2A
                                                                  // which necessitates calling toUpperCase() to properly encode)
     // The following are not required for percent-encoding per RFC5987,
     // so we can allow for a little better readability over the wire: |`^

@@ -1,6 +1,7 @@
 ---
 title: Document.width
 slug: Web/API/Document/width
+page-type: web-api-instance-property
 tags:
   - API
   - Document
@@ -23,17 +24,15 @@ pixels.
 
 Not supported by Internet Explorer.
 
-## Syntax
+## Value
 
-```js
-pixels = document.width;
-```
+A number that represents the width of the document in pixels.
 
-## Example
+## Examples
 
 ```js
 function init() {
-  alert("The width of the document is " + document.width + " pixels.");
+  alert(`The width of the document is ${document.width} pixels.`);
 }
 ```
 

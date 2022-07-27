@@ -13,8 +13,9 @@ browser-compat: javascript.builtins.TypedArray.from
 ---
 {{JSRef}}
 
-The **`TypedArray.from()`** method creates a new [typed
-array](/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#TypedArray_objects) from an array-like or iterable object. This method is nearly the same as
+The **`TypedArray.from()`** method creates a new
+[typed array](/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#typedarray_objects)
+from an array-like or iterable object. This method is nearly the same as
 {{jsxref("Array.from()")}}.
 
 {{EmbedInteractiveExample("pages/js/typedarray-from.html","shorter")}}
@@ -70,7 +71,7 @@ A new {{jsxref("TypedArray")}} instance.
 
 - array-like objects (objects with a `length` property and indexed
   elements); or
-- [iterable objects](/en-US/docs/Web/JavaScript/Guide/iterable) (objects
+- [iterable objects](/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) (objects
   where you can get its elements, such as {{jsxref("Map")}} and {{jsxref("Set")}}).
 
 `TypedArray.from()` has the optional parameter
@@ -93,8 +94,8 @@ Some subtle distinctions between {{jsxref("Array.from()")}} and
   `TypedArray.from()` is not a constructor,
   `TypedArray.from()` will throw a {{jsxref("TypeError")}},
   where `Array.from()` defaults to creating a new {{jsxref("Array")}}.
-- `TypedArray.from()` uses `[[Put]]` where
-  `Array.from()` uses `[[DefineProperty]]`. Hence, when
+- `TypedArray.from()` uses `[[Set]]` where
+  `Array.from()` uses `[[DefineOwnProperty]]`. Hence, when
   working with {{jsxref("Proxy")}} objects, it calls
   {{jsxref("Global_Objects/Proxy/handler/set", "handler.set")}} to create new
   elements rather than {{jsxref("Global_Objects/Proxy/handler/defineProperty",
@@ -131,7 +132,7 @@ Int16Array.from('123');
 Using an arrow function as the map function to manipulate the elements
 
 ```js
-Float32Array.from([1, 2, 3], x => x + x);
+Float32Array.from([1, 2, 3], (x) => x + x);
 // Float32Array [ 2, 4, 6 ]
 ```
 
@@ -152,7 +153,7 @@ Uint8Array.from({length: 5}, (v, k) => k);
 
 ## See also
 
-- A polyfill of `TypedArray.from` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-typed-arrays)
+- [Polyfill of `TypedArray.from` in `core-js`](https://github.com/zloirock/core-js#ecmascript-typed-arrays)
 - {{jsxref("TypedArray.of()")}}
 - {{jsxref("Array.from()")}}
 - {{jsxref("Array.prototype.map()")}}

@@ -1,6 +1,7 @@
 ---
 title: 'XRQuadLayer: redraw event'
 slug: Web/API/XRQuadLayer/redraw_event
+page-type: web-api-event
 tags:
   - API
   - Event
@@ -23,9 +24,9 @@ See also the {{domxref("XRCompositionLayer.needsRedraw")}} property which is als
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
 ```js
-addEventListener('redraw', event => { })
+addEventListener('redraw', (event) => { })
 
-onredraw = event => { }
+onredraw = (event) => { }
 ```
 
 ## Event type
@@ -51,7 +52,7 @@ quadLayer.addEventListener("redraw", function(event) {
 });
 ```
 
-Alternatively, you can use the `onredraw` event handler property to establish a handler for the `redraw` event:
+Alternatively, you can use the `onredraw` event handler property to establish a handler for the `redraw` event:
 
 ```js
 quadLayer.onredraw = function(event) {

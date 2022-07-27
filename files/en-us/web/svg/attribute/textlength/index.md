@@ -22,10 +22,10 @@ By using `textLength`, you can ensure that your SVG text displays at the same wi
 
 You can use this attribute with the following SVG elements:
 
-*   {{SVGElement("text")}}
-*   {{SVGElement("textPath")}}
-*   {{SVGElement("tref")}}
-*   {{SVGElement("tspan")}}
+- {{SVGElement("text")}}
+- {{SVGElement("textPath")}}
+- {{SVGElement("tref")}}
+- {{SVGElement("tspan")}}
 
 ## Example
 
@@ -37,8 +37,8 @@ html, body, svg {
 
 ```html
 <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-  <text y="20" textLength="6em">Small text length</text>
-  <text y="40" textLength="120%">Big text length</text>
+  <text y="20" textLength="6em">Small text length</text>
+  <text y="40" textLength="120%">Big text length</text>
 </svg>
 ```
 
@@ -66,10 +66,10 @@ html, body, svg {
   </tbody>
 </table>
 
-*   `<length-percentage>`
-    *   : This value specifies the width of the space the text will be adjusted to occupy as absolute length or percentage.
-*   `<number>`
-    *   : A numeric value outlines a length referring to the units of the current coordinate system.
+- `<length-percentage>`
+  - : This value specifies the width of the space the text will be adjusted to occupy as absolute length or percentage.
+- `<number>`
+  - : A numeric value outlines a length referring to the units of the current coordinate system.
 
 ## Interactive example
 
@@ -129,15 +129,15 @@ const baseLength = Math.floor(textElement.textLength.baseVal.value);
 widthSlider.value = baseLength;
 
 widthSlider.addEventListener("input", function(event) {
-  textElement.textLength.baseVal.newValueSpecifiedUnits(
-      SVGLength.SVG_LENGTHTYPE_PX, widthSlider.valueAsNumber);
-  widthDisplay.innerText = widthSlider.value;
+  textElement.textLength.baseVal.newValueSpecifiedUnits(
+      SVGLength.SVG_LENGTHTYPE_PX, widthSlider.valueAsNumber);
+  widthDisplay.innerText = widthSlider.value;
 }, false);
 
 widthSlider.dispatchEvent(new Event("input"));
 ```
 
-After fetching the element references, an {{domxref("EventListener")}} is established by calling {{domxref("EventTarget.addEventListener", "addEventListener()")}} on the slider control, to receive any {{event("input")}} events which occur. These events will be sent any time the slider's value changes, even if the user hasn't stopped moving it, so we can responsively adjust the text width.
+After fetching the element references, an {{domxref("EventListener")}} is established by calling {{domxref("EventTarget.addEventListener", "addEventListener()")}} on the slider control, to receive any {{domxref("HTMLElement/input_event", "input")}} events which occur. These events will be sent any time the slider's value changes, even if the user hasn't stopped moving it, so we can responsively adjust the text width.
 
 When an `"input"` event occurs, we call `newValueSpecifiedUnits()` to set the value of `textLength` to the slider's new value, using the `SVGLength` interface's `SVG_LENGTHTYPE_PX` unit type to indicate that the value represents pixels. Note that we have to dive into `textLength` to get its `baseVal` property; `textLength` is stored as an {{domxref("SVGLength")}} object, so we can't treat it like a plain number.
 
@@ -151,31 +151,7 @@ Here's what the example looks like. Try dragging the slider around to get a feel
 
 ## Specifications
 
-<table class="no-markdown">
-  <thead>
-    <tr>
-      <th scope="col">Specification</th>
-      <th scope="col">Status</th>
-      <th scope="col">Comment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        {{SpecName("SVG2", "text.html#TextElementTextLengthAttribute", "textLength")}}
-      </td>
-      <td>{{Spec2("SVG2")}}</td>
-      <td>Allowed percentages and numbers as values.</td>
-    </tr>
-    <tr>
-      <td>
-        {{SpecName("SVG1.1", "text.html#TextElementTextLengthAttribute", "textLength")}}
-      </td>
-      <td>{{Spec2("SVG1.1")}}</td>
-      <td>Initial definition</td>
-    </tr>
-  </tbody>
-</table>
+{{Specifications}}
 
 ## Browser compatibility
 
@@ -183,6 +159,6 @@ Here's what the example looks like. Try dragging the slider around to get a feel
 
 ## See also
 
-*   SVG Tutorial: [Texts](/en-US/docs/Web/SVG/Tutorial/Texts)
-*   {{domxref("SVGAnimatedLength")}} and {{domxref("SVGLength")}}
-*   {{SVGElement("text")}}
+- SVG Tutorial: [Texts](/en-US/docs/Web/SVG/Tutorial/Texts)
+- {{domxref("SVGAnimatedLength")}} and {{domxref("SVGLength")}}
+- {{SVGElement("text")}}

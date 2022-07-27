@@ -53,8 +53,8 @@ The following example displays the word "MDN" as a hypertext link that returns t
 to the Mozilla Developer Network.
 
 ```js
-var hotText = 'MDN';
-var url = 'https://developer.mozilla.org/';
+const hotText = 'MDN';
+const url = 'https://developer.mozilla.org/';
 
 console.log('Click to return to ' + hotText.link(url));
 // Click to return to <a href="https://developer.mozilla.org/">MDN</a>
@@ -70,5 +70,5 @@ console.log('Click to return to ' + hotText.link(url));
 
 ## See also
 
-- A polyfill of `String.prototype.link` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
+- [Polyfill of `String.prototype.link` in `core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
 - {{jsxref("String.prototype.anchor()")}}

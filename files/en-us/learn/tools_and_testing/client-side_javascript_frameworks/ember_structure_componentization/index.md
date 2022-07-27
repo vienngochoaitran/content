@@ -79,7 +79,7 @@ However, we don't want this. Instead, we want it to contain the TodoMVC app stru
 </section>
 ```
 
-> **Note:** [`aria-label`](/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) provides a label for assistive technology to make use of — for example, for a screenreader to read out. This is useful in such cases where we have an [`<input>`](/en-US/docs/Web/HTML/Element/input) being used with no corresponding HTML text that could be turned into a label.
+> **Note:** [`aria-label`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) provides a label for assistive technology to make use of — for example, for a screenreader to read out. This is useful in such cases where we have an [`<input>`](/en-US/docs/Web/HTML/Element/input) being used with no corresponding HTML text that could be turned into a label.
 
 When you save `application.hbs`, the development server you started earlier will automatically rebuild the app and refresh the browser. The rendered output should now look like this:
 
@@ -193,10 +193,10 @@ So to represent our app, we want to create 4 components:
 - Individual Todo
 - Footer
 
-To create a component, we use the `ember generate component` command, followed by the name of the component. Let’s create the header component first. To do so:
+To create a component, we use the `ember generate component` command, followed by the name of the component. Let's create the header component first. To do so:
 
-1.  Stop the server running by going to the terminal and pressing <kbd>Ctrl</kbd> + <kbd>C</kbd>.
-2.  Enter the following command into your terminal:
+1. Stop the server running by going to the terminal and pressing <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+2. Enter the following command into your terminal:
 
     ```bash
     ember generate component header
@@ -213,13 +213,13 @@ To create a component, we use the `ember generate component` command, followed b
       create tests/integration/components/header-test.js
     ```
 
-`header.hbs` is the template file where we’ll include the HTML structure for just that component. Later on we'll add the required dynamic functionality such as data bindings, responding to user interaction, etc.
+`header.hbs` is the template file where we'll include the HTML structure for just that component. Later on we'll add the required dynamic functionality such as data bindings, responding to user interaction, etc.
 
 > **Note:** The `header.js` file (shown as skipped) is for connection to a backing Glimmer Component Class, which we don't need for now, as they are for adding interactivity and state manipulation. By default, `generate component` generates template-only components, because in large applications, template-only components end up being the majority of the components.
 
 `header-test.js` is for writing automated tests to ensure that our app continues to work over time as we upgrade, add features, refactor, etc. Testing is outside the scope of this tutorial, although generally testing should be implemented as you develop, rather than after, otherwise it tends to be forgotten about. If you're curious about testing, or why you would want to have automated tests, check out the [official Ember tutorial on testing](https://guides.emberjs.com/release/tutorial/part-1/automated-testing/).
 
-Before we start adding any component code, let’s create the scaffolding for the other components. Enter the following lines into your terminal, one by one:
+Before we start adding any component code, let's create the scaffolding for the other components. Enter the following lines into your terminal, one by one:
 
 ```bash
 ember generate component todo-list
@@ -227,13 +227,13 @@ ember generate component todo
 ember generate component footer
 ```
 
-You’ll now see the following inside your `todomvc/app/components` directory:
+You'll now see the following inside your `todomvc/app/components` directory:
 
 ![the app components directory, showing the component template files we've created](todos-components-directory.png)
 
 Now that we have all of our component structure files, we can cut and paste the HTML for each component out of the `application.hbs` file and into each of those components, and then re-write the `application.hbs` to reflect our new abstractions.
 
-1.  The `header.hbs` file should be updated to contain the following:
+1. The `header.hbs` file should be updated to contain the following:
 
     ```html
     <input
@@ -244,7 +244,7 @@ Now that we have all of our component structure files, we can cut and paste the 
     >
     ```
 
-2.  `todo-list.hbs` should be updated to contain this chunk of code:
+2. `todo-list.hbs` should be updated to contain this chunk of code:
 
     ```html
     <section class="main">
@@ -260,7 +260,7 @@ Now that we have all of our component structure files, we can cut and paste the 
 
     > **Note:** The only non-HTML in this new `todo-list.hbs` is the `<Todo />` component invocation. In Ember, a component invocation is similar to declaring an HTML element, but the first letter starts with a capital letter, and the names are written in upper camel case, as you'll see with `<TodoList />` later on. The contents of the `todo.hbs` file below will replace `<Todo />` in the rendered page as our application loads.
 
-3.  Add the following into the `todo.hbs` file:
+3. Add the following into the `todo.hbs` file:
 
     ```html
     <li>
@@ -282,7 +282,7 @@ Now that we have all of our component structure files, we can cut and paste the 
     </li>
     ```
 
-4.  `footer.hbs` should be updated to contain the following:
+4. `footer.hbs` should be updated to contain the following:
 
     ```html
     <footer class="footer">
@@ -304,7 +304,7 @@ Now that we have all of our component structure files, we can cut and paste the 
     </footer>
     ```
 
-5.  Finally, the contents of `application.hbs` should be updated so that they call the appropriate components, like so:
+5. Finally, the contents of `application.hbs` should be updated so that they call the appropriate components, like so:
 
     ```html
     <section class="todoapp">
@@ -317,7 +317,7 @@ Now that we have all of our component structure files, we can cut and paste the 
     </section>
     ```
 
-6.  With these changes made, run `npm start` in your terminal again, then head over to `http://localhost:4200` to ensure that the todo app still looks as it did before the refactor.
+6. With these changes made, run `npm start` in your terminal again, then head over to `http://localhost:4200` to ensure that the todo app still looks as it did before the refactor.
 
 ![todo app rendered in the browser with new todo input field and existing todos showing, both saying buy movie tickets](todos-components-render.png)
 

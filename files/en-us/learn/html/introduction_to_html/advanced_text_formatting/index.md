@@ -44,7 +44,7 @@ There are many other elements in HTML for formatting text, which we didn't get t
 
 ## Description lists
 
-In HTML text fundamentals, we walked through how to [mark up basic lists](/en-US/docs/Learn/HTML#lists) in HTML, but we didn't mention the third type of list you'll occasionally come across — **description lists**. The purpose of these lists is to mark up a set of items and their associated descriptions, such as terms and definitions, or questions and answers. Let's look at an example of a set of terms and definitions:
+In HTML text fundamentals, we walked through how to [mark up basic lists](/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals#lists) in HTML, but we didn't mention the third type of list you'll occasionally come across — **description lists**. The purpose of these lists is to mark up a set of items and their associated descriptions, such as terms and definitions, or questions and answers. Let's look at an example of a set of terms and definitions:
 
 ```
 soliloquy
@@ -240,7 +240,7 @@ Quotation Element</em>) indicates that the enclosed text is an extended quotatio
 To turn this into a block quote, we would just do this:
 
 ```html
-<p>Here below is a blockquote...</p>
+<p>Here is a blockquote:</p>
 <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
   <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
   Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
@@ -281,7 +281,7 @@ There is a {{htmlelement("cite")}} element, but this is meant to contain the tit
 </blockquote>
 
 <p>The quote element — <code>&lt;q&gt;</code> — is <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
-for short quotations that don't require paragraph breaks.</q> -- <a href="/en-US/docs/Web/HTML/Element/q">
+for short quotations that don't require paragraph breaks.</q> — <a href="/en-US/docs/Web/HTML/Element/q">
 <cite>MDN q page</cite></a>.</p>
 ```
 
@@ -293,14 +293,14 @@ Citations are styled in italic font by default.
 
 Time for another active learning example! In this example we'd like you to:
 
-1.  Turn the middle paragraph into a blockquote, which includes a `cite` attribute.
-2.  Turn "The Need To Eliminate Negative Self Talk" in the third paragraph into an inline quote, and include a `cite` attribute.
-3.  Wrap the title of each source in `<cite>` tags and turn each one into a link to that source.
+1. Turn the middle paragraph into a blockquote, which includes a `cite` attribute.
+2. Turn "The Need To Eliminate Negative Self Talk" in the third paragraph into an inline quote, and include a `cite` attribute.
+3. Wrap the title of each source in `<cite>` tags and turn each one into a link to that source.
 
 The citation sources you need are:
 
-- http\://www\.brainyquote.com/quotes/authors/c/confucius.html for the Confucius quote
-- http\://example.com/affirmationsforpositivethinking for "The Need To Eliminate Negative Self Talk".
+- `http://www.brainyquote.com/quotes/authors/c/confucius.html` for the Confucius quote
+- `http://example.com/affirmationsforpositivethinking` for "The Need To Eliminate Negative Self Talk".
 
 If you make a mistake, you can always reset it using the _Reset_ button. If you get really stuck, press the _Show solution_ button to see the answer.
 
@@ -378,7 +378,7 @@ solution.addEventListener('click', function() {
   updateCode();
 });
 
-const htmlSolution = '<p>Hello and welcome to my motivation page. As <a href="http://www.brainyquote.com/quotes/authors/c/confucius.html"><cite>Confucius\' quotes site</cite></a> says:</p>\n\n<blockquote cite="http://www.brainyquote.com/quotes/authors/c/confucius.html">\n <p>It does not matter how slowly you go as long as you do not stop.</p>\n</blockquote>\n\n<p>I also love the concept of positive thinking, and <q cite="http://example.com/affirmationsforpositivethinking">The Need To Eliminate Negative Self Talk</q> (as mentioned in <a href="https://example.com/affirmationsforpositivethinking"><cite>Affirmations for Positive Thinking</cite></a>.)</p>';
+const htmlSolution = '<p>Hello and welcome to my motivation page. As <a href="http://www.brainyquote.com/quotes/authors/c/confucius.html"><cite>Confucius\' quotes site</cite></a> says:</p>\n\n<blockquote cite="http://www.brainyquote.com/quotes/authors/c/confucius.html">\n <p>It does not matter how slowly you go as long as you do not stop.</p>\n</blockquote>\n\n<p>I also love the concept of positive thinking, and <q cite="http://example.com/affirmationsforpositivethinking">The Need To Eliminate Negative Self Talk</q> (as mentioned in <a href="http://example.com/affirmationsforpositivethinking"><cite>Affirmations for Positive Thinking</cite></a>.)</p>';
 let solutionEntry = htmlSolution;
 
 textarea.addEventListener('input', updateCode);
@@ -431,19 +431,21 @@ textarea.onkeyup = function(){
 
 ## Abbreviations
 
-Another fairly common element you'll meet when looking around the Web is {{htmlelement("abbr")}} — this is used to wrap around an abbreviation or acronym, and provide a full expansion of the term (included inside a {{htmlattrxref("title")}} attribute.)
+Another fairly common element you'll meet when looking around the Web is {{htmlelement("abbr")}} — this is used to wrap around an abbreviation or acronym. When including either, provide a full expansion of the term in plain text on first use, along with the `<abbr>` to mark up the abbreviation. This provides a hint to user agents on how to announce/display the content while informing all users what the abbreviation means.
+
+If providing the expansion in addition to the abbreviation makes little sense, and the abbreviation or acronym is a fairly shortened term, provide the full expansion of the term as the value of {{htmlattrxref("title")}} attribute:
 
 ### Abbreviation example
 
 Let's look at an example.
 
 ```html
-<p>We use <abbr title="Hypertext Markup Language">HTML</abbr> to structure our web documents.</p>
+<p>We use <abbr>HTML</abbr>, Hypertext Markup Language, to structure our web documents.</p>
 
 <p>I think <abbr title="Reverend">Rev.</abbr> Green did it in the kitchen with the chainsaw.</p>
 ```
 
-These will come out looking something like this (the expansion will appear in a tooltip when the term is hovered over):
+These will come out looking something like this:
 
 {{EmbedLiveSample('Abbreviation_example', '100%', '150')}}
 
@@ -463,7 +465,7 @@ For this simple active learning assignment, we'd like you to mark up an abbrevia
 <p class="a11y-label">Press Esc to move focus away from the code area (Tab inserts a tab character).</p>
 
 <textarea id="code" class="input" style="min-height: 50px; width: 95%">
-<p>NASA sure does some exciting work.</p>
+<p>NASA, the National Aeronautics and Space Administration, sure does some exciting work.</p>
 </textarea>
 
 <div class="playable-buttons">
@@ -525,7 +527,7 @@ solution.addEventListener('click', function() {
   updateCode();
 });
 
-const htmlSolution = '<p><abbr title="National Aeronautics and Space Administration">NASA</abbr> sure does some exciting work.</p>';
+const htmlSolution = '<p><abbr>NASA</abbr>, the National Aeronautics and Space Administration, sure does some exciting work.</p>';
 let solutionEntry = htmlSolution;
 
 textarea.addEventListener('input', updateCode);
@@ -626,7 +628,7 @@ You will occasionally need to use superscript and subscript when marking up item
 
 The output of this code looks like so:
 
-{{ EmbedLiveSample('Superscript_and_subscript', '100%', '141px') }}
+{{ EmbedLiveSample('Superscript_and_subscript', '100%', 160) }}
 
 ## Representing computer code
 
@@ -638,7 +640,7 @@ There are a number of elements available for marking up computer code using HTML
 - {{htmlelement("kbd")}}: For marking up keyboard (and other types of) input entered into the computer.
 - {{htmlelement("samp")}}: For marking up the output of a computer program.
 
-Let's look at a few examples. You should try having a play with these (try grabbing a copy of our [other-semantics.html](https://github.com/mdn/learning-area/blob/master/html/introduction-to-html/advanced-text-formatting/other-semantics.html) sample file):
+Let's look at a few examples. You should try having a play with these (try grabbing a copy of our [other-semantics.html](https://github.com/mdn/learning-area/blob/main/html/introduction-to-html/advanced-text-formatting/other-semantics.html) sample file):
 
 ```html
 <pre><code>var para = document.querySelector('p');
@@ -660,7 +662,7 @@ para.onclick = function() {
 
 The above code will look like so:
 
-{{ EmbedLiveSample('Representing_computer_code','100%',300) }}
+{{ EmbedLiveSample('Representing_computer_code','100%',350) }}
 
 ## Marking up times and dates
 
@@ -672,6 +674,7 @@ HTML also provides the {{htmlelement("time")}} element for marking up times and 
 
 Why is this useful? Well, there are many different ways that humans write down dates. The above date could be written as:
 
+<!-- markdownlint-disable MD033 -->
 - 20 January 2016
 - 20th January 2016
 - Jan 20 2016
@@ -681,6 +684,8 @@ Why is this useful? Well, there are many different ways that humans write down d
 - <span lang="fr">20e Janvier 2016</span>
 - <span lang="ja">2016 年 1 月 20 日</span>
 - And so on
+
+<!-- markdownlint-enable MD033 -->
 
 But these different forms cannot be easily recognized by computers — what if you wanted to automatically grab the dates of all events in a page and insert them into a calendar? The {{htmlelement("time")}} element allows you to attach an unambiguous, machine-readable time/date for this purpose.
 
@@ -711,14 +716,14 @@ You've reached the end of this article, but can you remember the most important 
 
 ## Summary
 
-That marks the end of our study of HTML text semantics. Bear in mind that what you have seen during this course is not an exhaustive list of HTML text elements — we wanted to try to cover the essentials, and some of the more common ones you will see in the wild, or at least might find interesting. To find way more HTML elements, you can take a look at our [HTML element reference](/en-US/docs/Web/HTML/Element) (the [Inline text semantics](/en-US/docs/Web/HTML/Element#inline_text_semantics) section would be a great place to start.) In the next article we will look at the HTML elements you'd use to structure the different parts of an HTML document.
+That marks the end of our study of HTML text semantics. Bear in mind that what you have seen during this course is not an exhaustive list of HTML text elements — we wanted to try to cover the essentials, and some of the more common ones you will see in the wild, or at least might find interesting. To find way more HTML elements, you can take a look at our [HTML element reference](/en-US/docs/Web/HTML/Element) (the [Inline text semantics](/en-US/docs/Web/HTML/Element#inline_text_semantics) section would be a great place to start). In the next article, we'll look at the HTML elements you'd use to [structure the different parts of an HTML document](/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure).
 
 {{PreviousMenuNext("Learn/HTML/Introduction_to_HTML/Creating_hyperlinks", "Learn/HTML/Introduction_to_HTML/Document_and_website_structure", "Learn/HTML/Introduction_to_HTML")}}
 
 ## In this module
 
 - [Getting started with HTML](/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started)
-- [What’s in the head? Metadata in HTML](/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
+- [What's in the head? Metadata in HTML](/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
 - [HTML text fundamentals](/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals)
 - [Creating hyperlinks](/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks)
 - [Advanced text formatting](/en-US/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting)

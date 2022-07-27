@@ -1,6 +1,7 @@
 ---
 title: MediaStream
 slug: Web/API/MediaStream
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -10,13 +11,15 @@ tags:
   - WebRTC
 browser-compat: api.MediaStream
 ---
-{{APIRef("Media Capture and Streams")}}
+{{DefaultAPISidebar("Media Capture and Streams")}}
 
 The **`MediaStream`** interface represents a stream of media content. A stream consists of several **tracks**, such as video or audio tracks. Each track is specified as an instance of {{domxref("MediaStreamTrack")}}.
 
 You can obtain a `MediaStream` object either by using the constructor or by calling functions such as {{domxref("MediaDevices.getUserMedia()")}}, {{domxref("MediaDevices.getDisplayMedia()")}}, or {{domxref("HTMLCanvasElement.captureStream()")}}.
 
 Some user agents subclass this interface to provide more precise information or functionality, like in {{domxref("CanvasCaptureMediaStreamTrack")}}.
+
+{{InheritanceDiagram}}
 
 ## Constructor
 
@@ -30,14 +33,7 @@ _This interface inherits properties from its parent, {{domxref("EventTarget")}}.
 - {{domxref("MediaStream.active")}} {{readonlyinline}}
   - : A Boolean value that returns `true` if the `MediaStream` is active, or `false` otherwise.
 - {{domxref("MediaStream.id")}} {{readonlyInline}}
-  - : A {{domxref("DOMString")}} containing 36 characters denoting a universally unique identifier ({{Glossary("UUID")}}) for the object.
-
-### Event handlers
-
-- {{domxref("MediaStream.onaddtrack")}}
-  - : An [event handler](/en-US/docs/Web/Events/Event_handlers) containing the action to perform when an {{event("addtrack")}} event is fired when a new {{domxref("MediaStreamTrack")}} object is added.
-- {{domxref("MediaStream.onremovetrack")}}
-  - : An [event handler](/en-US/docs/Web/Events/Event_handlers) containing the action to perform when a {{event("removetrack")}} event is fired when a {{domxref("MediaStreamTrack")}} object is removed from it.
+  - : A string containing a 36-character universally unique identifier ({{Glossary("UUID")}}) for the object.
 
 ## Methods
 
@@ -77,10 +73,8 @@ _This interface inherits methods from its parent, {{domxref("EventTarget")}}._
 
 - {{domxref("MediaStream/addtrack_event", "addtrack")}}
   - : Fired when a new {{domxref("MediaStreamTrack")}} object is added.
-    Also available via the {{domxref("MediaStream/onaddtrack", "onaddtrack")}} property.
 - {{domxref("MediaStream/removetrack_event", "removetrack")}}
   - : Fired when a {{domxref("MediaStreamTrack")}} object has been removed.
-    Also available via the {{domxref("MediaStream/onremovetrack", "onremovetrack")}} property.
 
 <!---->
 

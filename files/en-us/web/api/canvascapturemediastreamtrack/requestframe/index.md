@@ -1,6 +1,7 @@
 ---
 title: CanvasCaptureMediaStreamTrack.requestFrame()
 slug: Web/API/CanvasCaptureMediaStreamTrack/requestFrame
+page-type: web-api-instance-method
 tags:
   - Canvas
   - CanvasCaptureMediaStream
@@ -13,7 +14,7 @@ tags:
   - requestFrame
 browser-compat: api.CanvasCaptureMediaStreamTrack.requestFrame
 ---
-{{APIRef("Media Capture and Streams")}}
+{{DefaultAPISidebar("Media Capture and Streams")}}
 
 The {{domxref("CanvasCaptureMediaStreamTrack")}} method
 **`requestFrame()`** requests that a frame be captured from

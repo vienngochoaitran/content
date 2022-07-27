@@ -19,12 +19,12 @@ Static methods are often utility functions, such as functions to create or clone
 
 > **Note:** In the context of classes, MDN Web Docs content uses the terms properties and [fields](/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields) interchangeably.
 
-{{EmbedInteractiveExample("pages/js/classes-static.html")}}
+{{EmbedInteractiveExample("pages/js/classes-static.html", "taller")}}
 
 ## Syntax
 
 ```js
-static methodName() { /* ... */ }
+static methodName() { /* … */ }
 static propertyName [= value];
 
 // Class static initialization block
@@ -39,9 +39,9 @@ static {
 
 The following example demonstrates several things:
 
-1.  How a static member (method or property) is defined on a class.
-2.  That a class with a static member can be sub-classed.
-3.  How a static member can and cannot be called.
+1. How a static member (method or property) is defined on a class.
+2. That a class with a static member can be sub-classed.
+3. How a static member can and cannot be called.
 
 ```js
 class Triple {

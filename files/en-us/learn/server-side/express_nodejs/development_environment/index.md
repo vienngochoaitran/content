@@ -51,7 +51,7 @@ There are other peripheral tools that are part of a typical development environm
 
 ### What operating systems are supported?
 
-_Node_ can be run on Windows, macOS, many flavors of Linux, Docker, etc. There is a full list on the nodejs [Downloads](https://nodejs.org/en/download/) page. Almost any personal computer should have the necessary performance to run Node during development. _Express_ is run in a _Node_ environment, and hence can run on any platform that runs _Node_.
+_Node_ can be run on Windows, macOS, many flavors of Linux, Docker, etc. There is a full list on the Node.js [Downloads](https://nodejs.org/en/download/) page. Almost any personal computer should have the necessary performance to run Node during development. _Express_ is run in a _Node_ environment, and hence can run on any platform that runs _Node_.
 
 In this article we provide setup instructions for Windows, macOS, and Ubuntu Linux.
 
@@ -77,12 +77,12 @@ In order to use _Express_ you will first have to install _Nodejs_ and the [Node 
 
 Installing _Node_ and _NPM_ on Windows and macOS is straightforward because you can just use the provided installer:
 
-1.  Download the required installer:
+1. Download the required installer:
 
-    1.  Go to <https://nodejs.org/en/>
-    2.  Select the button to download the LTS build that is "Recommended for most users".
+    1. Go to <https://nodejs.org/en/>
+    2. Select the button to download the LTS build that is "Recommended for most users".
 
-2.  Install Node by double-clicking on the downloaded file and following the installation prompts.
+2. Install Node by double-clicking on the downloaded file and following the installation prompts.
 
 ### Ubuntu 20.04
 
@@ -113,7 +113,7 @@ The _Nodejs_ package manager _NPM_ should also have been installed, and can be t
 
 As a slightly more exciting test let's create a very basic "pure node" server that prints out "Hello World" in the browser when you visit the correct URL in your browser:
 
-1.  Copy the following text into a file named **hellonode.js**. This uses pure _Node_ features (nothing from Express) and some ES6 syntax:
+1. Copy the following text into a file named **hellonode.js**. This uses pure _Node_ features (nothing from Express) and some ES6 syntax:
 
     ```js
     //Load HTTP module
@@ -140,14 +140,14 @@ As a slightly more exciting test let's create a very basic "pure node" server th
 
     > **Note:** Don't worry if you don't understand exactly what this code is doing yet! We'll explain our code in greater detail once we start using Express!
 
-2.  Start the server by navigating into the same directory as your `hellonode.js` file in your command prompt, and calling `node` along with the script name, like so:
+2. Start the server by navigating into the same directory as your `hellonode.js` file in your command prompt, and calling `node` along with the script name, like so:
 
     ```bash
     >node hellonode.js
     Server running at http://127.0.0.1:3000/
     ```
 
-3.  Navigate to the URL `http://127.0.0.1:3000`. If everything is working, the browser should display the string "Hello World".
+3. Navigate to the URL `http://127.0.0.1:3000`. If everything is working, the browser should display the string "Hello World".
 
 ## Using NPM
 
@@ -155,7 +155,7 @@ Next to _Node_ itself, [NPM](https://docs.npmjs.com/) is the most important tool
 
 > **Note:** From Node's perspective, _Express_ is just another package that you need to install using NPM and then require in your own code.
 
-You can manually use NPM to separately fetch each needed package. Typically we instead manage dependencies using a plain-text definition file named [package.json](https://docs.npmjs.com/files/package.json). This file lists all the dependencies for a specific JavaScript "package", including the package's name, version, description, initial file to execute, production dependencies, development dependencies, versions of _Node_ it can work with, etc. The **package.json** file should contain everything NPM needs to fetch and run your application (if you were writing a reusable library you could use this definition to upload your package to the npm repository and make it available for other users).
+You can manually use NPM to separately fetch each needed package. Typically we instead manage dependencies using a plain-text definition file named [package.json](https://docs.npmjs.com/files/package.json/). This file lists all the dependencies for a specific JavaScript "package", including the package's name, version, description, initial file to execute, production dependencies, development dependencies, versions of _Node_ it can work with, etc. The **package.json** file should contain everything NPM needs to fetch and run your application (if you were writing a reusable library you could use this definition to upload your package to the npm repository and make it available for other users).
 
 ### Adding dependencies
 
@@ -163,14 +163,14 @@ The following steps show how you can use NPM to download a package, save it into
 
 > **Note:** Here we show the instructions to fetch and install the _Express_ package. Later on we'll show how this package, and others, are already specified for us using the *Express Application Generator*. This section is provided because it is useful to understand how NPM works and what is being created by the application generator.
 
-1.  First create a directory for your new application and navigate into it:
+1. First create a directory for your new application and navigate into it:
 
     ```bash
     mkdir myapp
     cd myapp
     ```
 
-2.  Use the npm `init` command to create a **package.json** file for your application. This command prompts you for a number of things, including the name and version of your application and the name of the initial entry point file (by default this is **index.js**). For now, just accept the defaults:
+2. Use the npm `init` command to create a **package.json** file for your application. This command prompts you for a number of things, including the name and version of your application and the name of the initial entry point file (by default this is **index.js**). For now, just accept the defaults:
 
     ```bash
     npm init
@@ -192,9 +192,9 @@ The following steps show how you can use NPM to download a package, save it into
     }
     ```
 
-3.  Now install Express in the `myapp` directory and save it in the dependencies list of your **package.json** file
+3. Now install Express in the `myapp` directory and save it in the dependencies list of your **package.json** file:
 
-4.  ```bash
+   ```bash
     npm install express
     ```
 
@@ -217,7 +217,7 @@ The following steps show how you can use NPM to download a package, save it into
     }
     ```
 
-5.  To use the Express library you call the `require()` function in your index.js file to include it in your application.
+4. To use the Express library you call the `require()` function in your **index.js** file to include it in your application.
     Create this file now, in the root of the "myapp" application directory, and give it the following contents:
 
     ```js
@@ -240,19 +240,19 @@ The following steps show how you can use NPM to download a package, save it into
 
     > **Note:** The backticks in the `` `Example app listening on port ${port}!` `` let us interpolate the value of `$port` into the string.
 
-6.  You can start the server by calling node with the script in your command prompt:
+5. You can start the server by calling node with the script in your command prompt:
 
     ```bash
     >node index.js
     Example app listening on port 3000
     ```
 
-7.  Navigate to the URL `http://127.0.0.1:3000/`.
+6. Navigate to the URL `http://127.0.0.1:3000/`.
     If everything is working, the browser should display the string "Hello World!".
 
 ### Development dependencies
 
-If a dependency is only used during development, you should instead save it as a "development dependency" (so that your package users don't have to install it in production). For example, to use the popular JavaScript Linting tool [eslint](https://eslint.org/) you would call NPM as shown:
+If a dependency is only used during development, you should instead save it as a "development dependency" (so that your package users don't have to install it in production). For example, to use the popular JavaScript Linting tool [ESLint](https://eslint.org/) you would call NPM as shown:
 
 ```bash
 npm install eslint --save-dev
@@ -270,7 +270,7 @@ The following entry would then be added to your application's **package.json**:
 
 ### Running tasks
 
-In addition to defining and fetching dependencies you can also define _named_ scripts in your **package.json** files and call NPM to execute them with the [run-script](https://docs.npmjs.com/cli/run-script) command. This approach is commonly used to automate running tests and parts of the development or build toolchain (e.g., running tools to minify JavaScript, shrink images, LINT/analyze your code, etc).
+In addition to defining and fetching dependencies you can also define _named_ scripts in your **package.json** files and call NPM to execute them with the [run-script](https://docs.npmjs.com/cli/run-script/) command. This approach is commonly used to automate running tests and parts of the development or build toolchain (e.g., running tools to minify JavaScript, shrink images, LINT/analyze your code, etc).
 
 > **Note:** Task runners like [Gulp](https://gulpjs.com/) and [Grunt](https://gruntjs.com/) can also be used to run tests and other external tools.
 
@@ -278,9 +278,9 @@ For example, to define a script to run the _eslint_ development dependency that 
 
 ```json
 "scripts": {
-  ...
+  // …
   "lint": "eslint src/js"
-  ...
+  // …
 }
 ```
 
@@ -374,7 +374,7 @@ The DEBUG command creates useful logging, resulting in an output like that shown
 ```bash
 >SET DEBUG=helloworld:* & npm start
 
-> helloworld@0.0.0 start D:\Github\expresstests\helloworld
+> helloworld@0.0.0 start D:\GitHub\expresstests\helloworld
 > node ./bin/www
 
   helloworld:server Listening on port 3000 +0ms
@@ -398,7 +398,7 @@ In the next article we start working through a tutorial to build a complete web 
 - [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager/) (nodejs.org)
 - [Installing Express](https://expressjs.com/en/starter/installing.html) (expressjs.com)
 - [Express Application Generator](https://expressjs.com/en/starter/generator.html) (expressjs.com)
-- [Using Node.js with Windows subsystem for Linux](https://docs.microsoft.com/windows/nodejs/) (docs.microsoft.com)
+- [Using Node.js with Windows subsystem for Linux](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/) (docs.microsoft.com)
 
 {{PreviousMenuNext("Learn/Server-side/Express_Nodejs/Introduction", "Learn/Server-side/Express_Nodejs/Tutorial_local_library_website", "Learn/Server-side/Express_Nodejs")}}
 

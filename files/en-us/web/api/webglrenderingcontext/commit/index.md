@@ -1,6 +1,7 @@
 ---
 title: WebGLRenderingContext.commit()
 slug: Web/API/WebGLRenderingContext/commit
+page-type: web-api-instance-method
 tags:
   - API
   - Experimental
@@ -20,8 +21,16 @@ context is not directly fixed to a specific canvas.
 ## Syntax
 
 ```js
-void WebGLRenderingContext.commit()
+commit()
 ```
+
+### Parameters
+
+None.
+
+### Return value
+
+None ({{jsxref("undefined")}}).
 
 ## Examples
 
@@ -30,7 +39,7 @@ var htmlCanvas = document.createElement('canvas');
 var offscreen = htmlCanvas.transferControlToOffscreen();
 var gl = offscreen.getContext('webgl');
 
-// ... some drawing using the gl context ...
+// Perform some drawing using the gl context
 
 // Push frames back to the original HTMLCanvasElement
 gl.commit();

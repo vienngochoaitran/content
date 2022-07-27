@@ -21,18 +21,24 @@ Async functions may also be defined {{jsxref("Operators/async_function", "as
 ## Syntax
 
 ```js
-async function name([param[, param[, ...param]]]) {
-   statements
+async function name(param0) {
+  statements
+}
+async function name(param0, param1) {
+  statements
+}
+async function name(param0, param1, /* … ,*/ paramN) {
+  statements
 }
 ```
 
 ### Parameters
 
 - `name`
-  - : The function’s name.
-- `param`
+  - : The function's name.
+- `param` {{optional_inline}}
   - : The name of an argument to be passed to the function.
-- `statements`
+- `statements` {{optional_inline}}
   - : The statements comprising the body of the function. The `await`
     mechanism may be used.
 
@@ -58,7 +64,7 @@ Async functions can contain zero or more {{jsxref("Operators/await", "await")}} 
 Async functions always return a promise. If the return value of an async function is
 not explicitly a promise, it will be implicitly wrapped in a promise.
 
-For example, the following:
+For example, consider the following code:
 
 ```js
 async function foo() {
@@ -66,7 +72,7 @@ async function foo() {
 }
 ```
 
-...is similar to:
+It is similar to:
 
 ```js
 function foo() {
@@ -113,7 +119,7 @@ async function foo() {
 }
 ```
 
-...is equivalent to:
+It is also equivalent to:
 
 ```js
 function foo() {
@@ -128,17 +134,17 @@ step through the function. The return value forms the final link in the chain.
 In the following example, we successively await two promises. Progress moves through
 function `foo` in three stages.
 
-1.  The first line of the body of function `foo` is executed synchronously,
+1. The first line of the body of function `foo` is executed synchronously,
     with the await expression configured with the pending promise. Progress through
     `foo` is then suspended and control is yielded back to the function that
     called `foo`.
-2.  Some time later, when the first promise has either been fulfilled or rejected,
+2. Some time later, when the first promise has either been fulfilled or rejected,
     control moves back into `foo`. The result of the first promise fulfillment
     (if it was not rejected) is returned from the await expression. Here `1` is
     assigned to `result1`. Progress continues, and the second await expression
     is evaluated. Again, progress through `foo` is suspended and control is
     yielded.
-3.  Some time later, when the second promise has either been fulfilled or rejected,
+3. Some time later, when the second promise has either been fulfilled or rejected,
     control re-enters `foo`. The result of the second promise resolution is
     returned from the second await expression. Here `2` is assigned to
     `result2`. Control moves to the return expression (if any). The default
@@ -179,7 +185,7 @@ foo().catch(() => {}) // Attempt to swallow all errors...
 ```js
 function resolveAfter2Seconds() {
   console.log("starting slow promise")
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(function() {
       resolve("slow")
       console.log("slow promise is done")
@@ -189,7 +195,7 @@ function resolveAfter2Seconds() {
 
 function resolveAfter1Second() {
   console.log("starting fast promise")
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(function() {
       resolve("fast")
       console.log("fast promise is done")
@@ -231,8 +237,8 @@ async function parallel() {
 
   // Start 2 "jobs" in parallel and wait for both of them to complete
   await Promise.all([
-      (async()=>console.log(await resolveAfter2Seconds()))(),
-      (async()=>console.log(await resolveAfter1Second()))()
+      (async () => console.log(await resolveAfter2Seconds()))(),
+      (async () => console.log(await resolveAfter1Second()))()
   ])
 }
 
@@ -287,10 +293,10 @@ splits the function into many parts. Consider the following code:
 ```js
 function getProcessedData(url) {
   return downloadData(url) // returns a promise
-    .catch(e => {
+    .catch((e) => {
       return downloadFallbackData(url)  // returns a promise
     })
-    .then(v => {
+    .then((v) => {
       return processDataInWorker(v)  // returns a promise
     })
 }
@@ -314,7 +320,7 @@ Alternatively, you can chain the promise with `catch()`:
 
 ```js
 async function getProcessedData(url) {
-  const v = await downloadData(url).catch(e => { 
+  const v = await downloadData(url).catch((e) => {
     return downloadFallbackData(url)
   })
   return processDataInWorker(v)
@@ -339,5 +345,4 @@ it's not already a promise itself (as in the examples).
 - {{jsxref("Operators/async_function", "async function expression", "", 1)}}
 - {{jsxref("AsyncFunction")}} object
 - {{jsxref("Operators/await", "await")}}
-- ["Decorating
-  Async Javascript Functions" on "innolitics.com"](https://innolitics.com/10x/javascript-decorators-for-promise-returning-functions/)
+- [Decorating Async Javascript Functions](https://innolitics.com/10x/javascript-decorators-for-promise-returning-functions/) on _innolitics.com_

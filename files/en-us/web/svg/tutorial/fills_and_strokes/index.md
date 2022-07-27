@@ -47,9 +47,9 @@ The second attribute affecting strokes is the `stroke-linecap` property, demonst
 
 There are three possible values for `stroke-linecap`:
 
-*   `butt` closes the line off with a straight edge that's normal (at 90 degrees) to the direction of the stroke and crosses its end.
-*   `square` has essentially the same appearance, but stretches the stroke slightly beyond the actual path. The distance that the stroke goes beyond the path is half the `stroke-width`.
-*   `round` produces a rounded effect on the end of the stroke. The radius of this curve is also controlled by the `stroke-width`.
+- `butt` closes the line off with a straight edge that's normal (at 90 degrees) to the direction of the stroke and crosses its end.
+- `square` has essentially the same appearance, but stretches the stroke slightly beyond the actual path. The distance that the stroke goes beyond the path is half the `stroke-width`.
+- `round` produces a rounded effect on the end of the stroke. The radius of this curve is also controlled by the `stroke-width`.
 
 Use `stroke-linejoin` to control how the joint between two line segments is drawn.
 
@@ -95,7 +95,7 @@ There are additional `stroke` and `fill` properties available, including `fill-r
 
 ## Using CSS
 
-In addition to setting attributes on objects, you can also use CSS to style fills and strokes. Not all attributes can be set via CSS. Attributes that deal with painting and filling are usually available, so `fill`, `stroke`, `stroke-dasharray`, etc... can all be set this way, in addition to the gradient and pattern versions of those shown below. Attributes like `width`, `height`, or {{SVGElement("path")}} commands cannot be set through CSS. It's easiest just to test and find out what is available and what isn't.
+In addition to setting attributes on objects, you can also use CSS to style fills and strokes. Not all attributes can be set via CSS. Attributes that deal with painting and filling are usually available, so `fill`, `stroke`, `stroke-dasharray`, etc. can all be set this way, in addition to the gradient and pattern versions of those shown below. Attributes like `width`, `height`, or {{SVGElement("path")}} commands cannot be set through CSS. It's easiest just to test and find out what is available and what isn't.
 
 > **Note:** The [SVG specification](https://www.w3.org/TR/SVG/propidx.html) decides strictly between attributes that are *properties* and other attributes. The former can be modified with CSS, the latter not.
 

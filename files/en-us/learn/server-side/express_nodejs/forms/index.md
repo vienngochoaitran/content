@@ -52,7 +52,7 @@ First a brief overview of [HTML Forms](/en-US/docs/Learn/Forms). Consider a simp
 
 ![Simple name field example in HTML form](form_example_name_field.png)
 
-The form is defined in HTML as a collection of elements inside `<form>...</form>` tags, containing at least one `input` element of `type="submit"`.
+The form is defined in HTML as a collection of elements inside `<form>…</form>` tags, containing at least one `input` element of `type="submit"`.
 
 ```html
 <form action="/team_name_url/" method="post">
@@ -80,15 +80,15 @@ A process flowchart for processing form requests is shown below, starting with a
 
 As shown in the diagram above, the main things that form handling code needs to do are:
 
-1.  Display the default form the first time it is requested by the user.
+1. Display the default form the first time it is requested by the user.
 
     - The form may contain blank fields (e.g. if you're creating a new record), or it may be pre-populated with initial values (e.g. if you are changing a record, or have useful default initial values).
 
-2.  Receive data submitted by the user, usually in an HTTP `POST` request.
-3.  Validate and sanitize the data.
-4.  If any data is invalid, re-display the form—this time with any user populated values and error messages for the problem fields.
-5.  If all data is valid, perform required actions (e.g. save the data in the database, send a notification email, return the result of a search, upload a file, etc.)
-6.  Once all actions are complete, redirect the user to another page.
+2. Receive data submitted by the user, usually in an HTTP `POST` request.
+3. Validate and sanitize the data.
+4. If any data is invalid, re-display the form—this time with any user populated values and error messages for the problem fields.
+5. If all data is valid, perform required actions (e.g. save the data in the database, send a notification email, return the result of a search, upload a file, etc.)
+6. Once all actions are complete, redirect the user to another page.
 
 Often form handling code is implemented using a `GET` route for the initial display of the form and a `POST` route to the same path for handling validation and processing of form data. This is the approach that will be used in this tutorial.
 
@@ -113,7 +113,7 @@ npm install express-validator
 
 #### Using express-validator
 
-> **Note:** The [express-validator](https://express-validator.github.io/docs/#basic-guide) guide on Github provides a good overview of the API. We recommend you read that to get an idea of all its capabilities (including using [schema validation](https://express-validator.github.io/docs/schema-validation.html) and [creating custom validators](https://express-validator.github.io/docs/custom-validators-sanitizers.html)). Below we cover just a subset that is useful for the _LocalLibrary_.
+> **Note:** The [express-validator](https://express-validator.github.io/docs/#basic-guide) guide on GitHub provides a good overview of the API. We recommend you read that to get an idea of all its capabilities (including using [schema validation](https://express-validator.github.io/docs/schema-validation.html) and [creating custom validators](https://express-validator.github.io/docs/custom-validators-sanitizers.html)). Below we cover just a subset that is useful for the _LocalLibrary_.
 
 To use the validator in our controllers, we specify the particular functions we want to import from the [express-validator](https://www.npmjs.com/package/express-validator) module, as shown below:
 
@@ -201,12 +201,12 @@ router.post('/genre/create', genre_controller.genre_create_post);
 
 The following sub articles will take us through the process of adding the required forms to our example application. You need to read and work through each one in turn, before moving on to the next one.
 
-1.  [Create Genre form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_genre_form) — Defining a page to create `Genre` objects.
-2.  [Create Author form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_author_form) — Defining a page to create `Author` objects.
-3.  [Create Book form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_book_form) — Defining a page/form to create `Book` objects.
-4.  [Create BookInstance form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_BookInstance_form) — Defining a page/form to create `BookInstance` objects.
-5.  [Delete Author form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Delete_author_form) — Defining a page to delete `Author` objects.
-6.  [Update Book form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Update_Book_form) — Defining page to update `Book` objects.
+1. [Create Genre form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_genre_form) — Defining a page to create `Genre` objects.
+2. [Create Author form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_author_form) — Defining a page to create `Author` objects.
+3. [Create Book form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_book_form) — Defining a page/form to create `Book` objects.
+4. [Create BookInstance form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_BookInstance_form) — Defining a page/form to create `BookInstance` objects.
+5. [Delete Author form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Delete_author_form) — Defining a page to delete `Author` objects.
+6. [Update Book form](/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Update_Book_form) — Defining page to update `Book` objects.
 
 ## Challenge yourself
 

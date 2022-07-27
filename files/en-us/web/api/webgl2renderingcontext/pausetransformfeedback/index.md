@@ -1,6 +1,7 @@
 ---
 title: WebGL2RenderingContext.pauseTransformFeedback()
 slug: Web/API/WebGL2RenderingContext/pauseTransformFeedback
+page-type: web-api-instance-method
 tags:
   - API
   - Method
@@ -18,7 +19,7 @@ feedback operation.
 ## Syntax
 
 ```js
-void gl.pauseTransformFeedback();
+pauseTransformFeedback()
 ```
 
 ### Parameters
@@ -27,7 +28,7 @@ None.
 
 ### Return value
 
-None.
+None ({{jsxref("undefined")}}).
 
 ## Examples
 
@@ -36,7 +37,7 @@ var transformFeedback = gl.createTransformFeedback();
 gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, transformFeedback);
 gl.beginTransformFeedback(gl.TRIANGLES);
 gl.pauseTransformFeedback();
-//...
+// …
 gl.resumeTransformFeedback();
 gl.drawArrays(gl.TRIANGLES, 0, 3);
 gl.endTransformFeedback();

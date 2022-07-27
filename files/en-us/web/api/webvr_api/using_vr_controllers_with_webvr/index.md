@@ -1,6 +1,7 @@
 ---
 title: Using VR controllers with WebVR
 slug: Web/API/WebVR_API/Using_VR_controllers_with_WebVR
+page-type: guide
 tags:
   - Experimental
   - Gamepad API
@@ -29,13 +30,13 @@ The [Gamepad API](/en-US/docs/Web/API/Gamepad_API) is a fairly well-supported AP
 
 You can find more about basic Gamepad API usage in [Using the Gamepad API](/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API), and [Implementing controls using the Gamepad API](/en-US/docs/Games/Techniques/Controls_Gamepad_API).
 
-However, in this article we will mainly be concentrating on some of the new features provided by the {{specname("GamepadExtensions")}} API, which allows access to advanced controller information such as position and orientation data, control over haptic actuators (e.g. vibration hardware), and more. This API is very new, and currently is only supported and enabled by default in Firefox 55+ Beta/Nightly channels.
+However, in this article we will mainly be concentrating on some of the new features provided by the [Gamepad Extensions](https://w3c.github.io/gamepad/extensions.html) API, which allows access to advanced controller information such as position and orientation data, control over haptic actuators (e.g. vibration hardware), and more. This API is very new, and currently is only supported and enabled by default in Firefox 55+ Beta/Nightly channels.
 
 ## Types of controller
 
 There are two types of controller you'll encounter with VR hardware:
 
-- 6DoF (six-degrees-of-freedom) controllers provide access to both positional and orientation data — they can manipulate a VR scene and the objects it contains with movement but also rotatation. A good example is the HTC VIVE controllers.
+- 6DoF (six-degrees-of-freedom) controllers provide access to both positional and orientation data — they can manipulate a VR scene and the objects it contains with movement but also rotation. A good example is the HTC VIVE controllers.
 - 3DoF (three-degrees-of-freedom) controllers provide orientation but not positional data. A good example is the Google Daydream controller, which can be rotated to point to different things in 3D space like a laser pointer, but can't be moved inside a 3D scene.
 
 ## Basic controller access
@@ -49,9 +50,9 @@ We've written up a simple example to demonstrate — see our [vr-controller-basi
 The first notable code is as follows:
 
 ```js
-var initialRun = true;
+let initialRun = true;
 
-if(navigator.getVRDisplays && navigator.getGamepads) {
+if (navigator.getVRDisplays && navigator.getGamepads) {
   info.textContent = 'WebVR API and Gamepad API supported.'
   reportDisplays();
 } else {
@@ -64,19 +65,19 @@ Here we first use a tracking variable, `initialRun`, to note that this is the fi
 ```js
 function reportDisplays() {
   navigator.getVRDisplays().then(function(displays) {
-      console.log(displays.length + ' displays');
-    for(var i = 0; i < displays.length; i++) {
-      var cap = displays[i].capabilities;
+    console.log(`${displays.length} displays`);
+    for(let i = 0; i < displays.length; i++) {
+      const cap = displays[i].capabilities;
       // cap is a VRDisplayCapabilities object
-      var listItem = document.createElement('li');
-      listItem.innerHTML = '<strong>Display ' + (i+1) + '</strong>'
-                   + '<br>VR Display ID: ' + displays[i].displayId
-                   + '<br>VR Display Name: ' + displays[i].displayName
-                   + '<br>Display can present content: ' + cap.canPresent
-                   + '<br>Display is separate from the computer\'s main display: ' + cap.hasExternalDisplay
-                   + '<br>Display can return position info: ' + cap.hasPosition
-                   + '<br>Display can return orientation info: ' + cap.hasOrientation
-                   + '<br>Display max layers: ' + cap.maxLayers;
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `<strong>Display ${i+1}</strong><br>` +
+        `VR Display ID: ${displays[i].displayId}<br>` +
+        `VR Display Name: ${displays[i].displayName}<br>` +
+        `Display can present content: ${cap.canPresent}<br>` +
+        `Display is separate from the computer's main display: ${cap.hasExternalDisplay}<br>` +
+        `Display can return position info: ${cap.hasPosition}<br>` +
+        `Display can return orientation info: ${cap.hasOrientation}<br>` +
+        `Display max layers: ${cap.maxLayers}`;
       list.appendChild(listItem);
     }
 
@@ -96,18 +97,18 @@ The `reportGamepads()` function looks like this:
 
 ```js
 function reportGamepads() {
-    var gamepads = navigator.getGamepads();
-    console.log(gamepads.length + ' controllers');
-    for(var i = 0; i < gamepads.length; ++i) {
-        var gp = gamepads[i];
-        var listItem = document.createElement('li');
+    const gamepads = navigator.getGamepads();
+    console.log(`${gamepads.length} controllers`);
+    for (let i = 0; i < gamepads.length; ++i) {
+        const gp = gamepads[i];
+        const listItem = document.createElement('li');
         listItem.classList = 'gamepad';
-        listItem.innerHTML = '<strong>Gamepad ' + gp.index + '</strong> (' + gp.id + ')'
-                 + '<br>Associated with VR Display ID: ' + gp.displayId
-                 + '<br>Gamepad associated with which hand: ' + gp.hand
-                 + '<br>Available haptic actuators: ' + gp.hapticActuators.length
-                 + '<br>Gamepad can return position info: ' + gp.pose.hasPosition
-                 + '<br>Gamepad can return orientation info: ' + gp.pose.hasOrientation;
+        listItem.innerHTML = `<strong>Gamepad ${gp.index}</strong> (${gp.id})<br>` +
+          `Associated with VR Display ID: ${gp.displayId}<br>` +
+          `Gamepad associated with which hand: ${gp.hand}<br>` +
+          `Available haptic actuators: ${gp.hapticActuators.length}<br>` +
+          `Gamepad can return position info: ${gp.pose.hasPosition}<br>` +
+          `Gamepad can return orientation info: ${gp.pose.hasOrientation}`;
         list.appendChild(listItem);
     }
     initialRun = false;
@@ -128,14 +129,14 @@ The last thing to do here is set the `initialRun` variable to `false`, as the in
 
 ### Gamepad events
 
-To finish off this section, we'll look at the gamepad-associated events. There are two we need concern ourselves with — {{event("gamepadconnected")}} and {{event("gamepaddisconnected")}} — and it is fairly obvious what they do.
+To finish off this section, we'll look at the gamepad-associated events. There are two we need concern ourselves with — {{domxref("Window.gamepadconnected_event", "gamepadconnected")}} and {{domxref("Window.gamepaddisconnected_event", "gamepaddisconnected")}} — and it is fairly obvious what they do.
 
 At the end of our example we first include the `removeGamepads()` function:
 
 ```js
 function removeGamepads() {
-    var gpLi = document.querySelectorAll('.gamepad');
-    for(var i = 0; i < gpLi.length; i++) {
+    const gpLi = document.querySelectorAll('.gamepad');
+    for (let i = 0; i < gpLi.length; i++) {
     list.removeChild(gpLi[i]);
     }
 
@@ -149,14 +150,14 @@ This function grabs references to all list items with a class name of `gamepad`,
 
 ```js
 window.addEventListener('gamepadconnected', function(e) {
-  info.textContent = 'Gamepad ' + e.gamepad.index + ' connected.';
+  info.textContent = `Gamepad ${e.gamepad.index} connected.`;
   if(!initialRun) {
       setTimeout(removeGamepads, 1000);
   }
 });
 
 window.addEventListener('gamepaddisconnected', function(e) {
-  info.textContent = 'Gamepad ' + e.gamepad.index + ' disconnected.';
+  info.textContent = `Gamepad ${e.gamepad.index} disconnected.`;
   setTimeout(removeGamepads, 1000);
 });
 ```
@@ -178,13 +179,13 @@ We'll explore the code differences in this version below — see [webgl-demo.js]
 Inside the `drawVRScene()` function, you'll find this bit of code:
 
 ```js
-var gamepads = navigator.getGamepads();
-var gp = gamepads[0];
+const gamepads = navigator.getGamepads();
+const gp = gamepads[0];
 
 if(gp) {
-  var gpPose = gp.pose;
-  var curPos = gpPose.position;
-  var curOrient = gpPose.orientation;
+  const gpPose = gp.pose;
+  const curPos = gpPose.position;
+  const curOrient = gpPose.orientation;
   if(poseStatsDisplayed) {
     displayPoseStats(gpPose);
   }
@@ -193,7 +194,7 @@ if(gp) {
 
 Here we get the connected gamepads with {{domxref("Navigator.getGamepads")}}, then store the first gamepad detected in the `gp` variable. As we only need one gamepad for this demo, we'll just ignore the others.
 
-The next thing we do is to get the {{domxref("GamepadPose")}} object for the controller stored in gpPose (by querying {{domxref("Gamepad.pose")}}), and also store the current gamepad position and orientation for this frame in variables so they are easuy to access later. We also display the post stats for this frame in the DOM using the `displayPoseStats()` function. All of this is only done if `gp` actually has a value (if a gamepad is connected), which stops the demo erroring if we don't have our gamepad connected.
+The next thing we do is to get the {{domxref("GamepadPose")}} object for the controller stored in gpPose (by querying {{domxref("Gamepad.pose")}}), and also store the current gamepad position and orientation for this frame in variables so they are easy to access later. We also display the post stats for this frame in the DOM using the `displayPoseStats()` function. All of this is only done if `gp` actually has a value (if a gamepad is connected), which stops the demo erroring if we don't have our gamepad connected.
 
 Slightly later in the code, you can find this block:
 
@@ -229,36 +230,36 @@ In the `displayPoseStats()` function, we grab all of the data we want to display
 
 ```js
 function displayPoseStats(pose) {
-  var pos = pose.position;
-  var orient = pose.orientation;
-  var linVel = pose.linearVelocity;
-  var linAcc = pose.linearAcceleration;
-  var angVel = pose.angularVelocity;
-  var angAcc = pose.angularAcceleration;
+  const pos = pose.position;
+  const orient = pose.orientation;
+  const linVel = pose.linearVelocity;
+  const linAcc = pose.linearAcceleration;
+  const angVel = pose.angularVelocity;
+  const angAcc = pose.angularAcceleration;
 
   if(pose.hasPosition) {
-    posStats.textContent = 'Position: x ' + pos[0].toFixed(3) + ', y ' + pos[1].toFixed(3) + ', z ' + pos[2].toFixed(3);
+    posStats.textContent = `Position: x ${pos[0].toFixed(3)}, y ${pos[1].toFixed(3)}, z ${pos[2].toFixed(3)}`;
   } else {
     posStats.textContent = 'Position not reported';
   }
 
   if(pose.hasOrientation) {
-    orientStats.textContent = 'Orientation: x ' + orient[0].toFixed(3) + ', y ' + orient[1].toFixed(3) + ', z ' + orient[2].toFixed(3);
+    orientStats.textContent = `Orientation: x ${orient[0].toFixed(3)}, y ${orient[1].toFixed(3)}, z ${orient[2].toFixed(3)}`;
   } else {
     orientStats.textContent = 'Orientation not reported';
   }
 
-  linVelStats.textContent = 'Linear velocity: x ' + linVel[0].toFixed(3) + ', y ' + linVel[1].toFixed(3) + ', z ' + linVel[2].toFixed(3);
-  angVelStats.textContent = 'Angular velocity: x ' + angVel[0].toFixed(3) + ', y ' + angVel[1].toFixed(3) + ', z ' + angVel[2].toFixed(3);
+  linVelStats.textContent = `Linear velocity: x ${linVel[0].toFixed(3)}, y ${linVel[1].toFixed(3)}, z ${linVel[2].toFixed(3)}`;
+  angVelStats.textContent = `Angular velocity: x ${angVel[0].toFixed(3)}, y ${angVel[1].toFixed(3)}, z ${angVel[2].toFixed(3)}`;
 
   if(linAcc) {
-    linAccStats.textContent = 'Linear acceleration: x ' + linAcc[0].toFixed(3) + ', y ' + linAcc[1].toFixed(3) + ', z ' + linAcc[2].toFixed(3);
+    linAccStats.textContent = `Linear acceleration: x ${linAcc[0].toFixed(3)}, y ${linAcc[1].toFixed(3)}, z ${linAcc[2].toFixed(3)}`;
   } else {
     linAccStats.textContent = 'Linear acceleration not reported';
   }
 
   if(angAcc) {
-    angAccStats.textContent = 'Angular acceleration: x ' + angAcc[0].toFixed(3) + ', y ' + angAcc[1].toFixed(3) + ', z ' + angAcc[2].toFixed(3);
+    angAccStats.textContent = `Angular acceleration: x ${angAcc[0].toFixed(3)}, y ${angAcc[1].toFixed(3)}, z ${angAcc[2].toFixed(3)}`;
   } else {
     angAccStats.textContent = 'Angular acceleration not reported';
   }

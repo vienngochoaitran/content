@@ -49,7 +49,7 @@ arr.reduce((acc, val) => acc.concat(val), []);
 // [1, 2, 3, 4]
 
 // or with decomposition syntax
-const flattened = arr => [].concat(...arr);
+const flattened = (arr) => [].concat(...arr);
 ```
 
 ### reduce + concat + isArray + recursivity
@@ -159,7 +159,7 @@ arr5.flat();
 
 ## See also
 
-- A polyfill of `Array.prototype.flat` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-array)
+- [Polyfill of `Array.prototype.flat` in `core-js`](https://github.com/zloirock/core-js#ecmascript-array)
 - {{jsxref("Array.prototype.flatMap()")}}
 - {{jsxref("Array.prototype.map()")}}
 - {{jsxref("Array.prototype.reduce()")}}

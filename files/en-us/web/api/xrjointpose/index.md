@@ -1,6 +1,7 @@
 ---
 title: XRJointPose
 slug: Web/API/XRJointPose
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -13,7 +14,9 @@ browser-compat: api.XRJointPose
 ---
 {{APIRef("WebXR Device API")}}
 
-The **`XRJointPose`** interface is an {{domxref("XRPose")}} with additional information about the size of the skeleton joint it represents.
+The **`XRJointPose`** interface is an {{domxref("XRPose")}} with additional information about the size of the skeleton joint it represents.
+
+{{InheritanceDiagram}}
 
 ## Properties
 
@@ -28,11 +31,11 @@ Call {{domxref("XRFrame.getJointPose()")}} with an {{domxref("XRJointSpace")}} a
 
 ```js
 navigator.xr.requestSession({optionalFeatures: ["hand-tracking"]}).then(
-  // ...
+  // …
 );
 
 function renderFrame(session, frame) {
-   // ...
+   // …
 
    for (inputSource of session.inputSources) {
       if (inputSource.hand) {

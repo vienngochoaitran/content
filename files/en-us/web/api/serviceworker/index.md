@@ -1,6 +1,7 @@
 ---
 title: ServiceWorker
 slug: Web/API/ServiceWorker
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -19,6 +20,8 @@ A `ServiceWorker` object is available in the {{domxref("ServiceWorkerRegistratio
 
 The `ServiceWorker` interface is dispatched a set of lifecycle events — `install` and `activate` — and functional events including `fetch`. A `ServiceWorker` object has an associated {{domxref("ServiceWorker.state")}}, related to its lifecycle.
 
+{{InheritanceDiagram}}
+
 ## Properties
 
 _The `ServiceWorker` interface inherits properties from its parent, {{domxref("EventTarget")}}._
@@ -26,16 +29,16 @@ _The `ServiceWorker` interface inherits properties from its parent, {{domxref("E
 - {{domxref("ServiceWorker.scriptURL")}} {{readonlyinline}}
   - : Returns the `ServiceWorker` serialized script URL defined as part of {{domxref("ServiceWorkerRegistration")}}. The URL must be on the same origin as the document that registers the `ServiceWorker`.
 - {{domxref("ServiceWorker.state")}} {{readonlyinline}}
-  - : Returns the state of the service worker. It returns one of the following values: `installing`, `installed,` `activating`, `activated`, or `redundant`.
-
-### Event handlers
-
-- {{domxref("ServiceWorker.onstatechange")}} {{readonlyinline}}
-  - : An {{domxref("EventListener")}} property called whenever an event of type `statechange` is fired; it is basically fired anytime the {{domxref("ServiceWorker.state")}} changes.
+  - : Returns the state of the service worker. It returns one of the following values: `parsed`, `installing`, `installed,` `activating`, `activated`, or `redundant`.
 
 ## Methods
 
 _The `ServiceWorker` interface inherits methods from its parent, {{domxref("EventTarget")}}._
+
+## Events
+
+- {{domxref("ServiceWorker.statechange_event", "statechange")}} {{readonlyinline}}
+  - : Fires anytime the {{domxref("ServiceWorker.state")}} changes.
 
 ## Examples
 
@@ -46,7 +49,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js', {
         scope: './'
     }).then(function (registration) {
-        var serviceWorker;
+        let serviceWorker;
         if (registration.installing) {
             serviceWorker = registration.installing;
             document.querySelector('#kind').textContent = 'installing';

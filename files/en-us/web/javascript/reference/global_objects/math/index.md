@@ -10,15 +10,15 @@ browser-compat: javascript.builtins.Math
 ---
 {{JSRef}}
 
-**`Math`** is a built-in object that has properties and methods for mathematical constants and functions. It’s not a function object.
+**`Math`** is a built-in object that has properties and methods for mathematical constants and functions. It's not a function object.
 
 `Math` works with the {{jsxref("Number")}} type. It doesn't work with {{jsxref("BigInt")}}.
 
 ## Description
 
-Unlike many other global objects, `Math` is not a constructor. All properties and methods of `Math` are static. You refer to the constant pi as `Math.PI` and you call the sine function as `Math.sin(x)`, where `x` is the method’s argument. Constants are defined with the full precision of real numbers in JavaScript.
+Unlike many other global objects, `Math` is not a constructor. All properties and methods of `Math` are static. You refer to the constant pi as `Math.PI` and you call the sine function as `Math.sin(x)`, where `x` is the method's argument. Constants are defined with the full precision of real numbers in JavaScript.
 
-> **Note:** Many `Math` functions have a precision that’s _implementation-dependent._
+> **Note:** Many `Math` functions have a precision that's _implementation-dependent._
 >
 > This means that different browsers can give a different result. Even the same JavaScript engine on a different OS or architecture can give different results!
 
@@ -70,7 +70,7 @@ Unlike many other global objects, `Math` is not a constructor. All properties an
 - {{jsxref("Global_Objects/Math/cosh", "Math.cosh(<var>x</var>)")}}
   - : Returns the hyperbolic cosine of `x`.
 - {{jsxref("Global_Objects/Math/exp", "Math.exp(<var>x</var>)")}}
-  - : Returns `e^x`, where `x` is the argument, and `e` is Euler's constant (`2.718`…, the base of the natural logarithm).
+  - : Returns e<sup>x</sup>, where x is the argument, and e is Euler's constant (`2.718`…, the base of the natural logarithm).
 - {{jsxref("Global_Objects/Math/expm1", "Math.expm1(<var>x</var>)")}}
   - : Returns subtracting `1` from `exp(x)`.
 - {{jsxref("Global_Objects/Math/floor", "Math.floor(<var>x</var>)")}}
@@ -94,7 +94,7 @@ Unlike many other global objects, `Math` is not a constructor. All properties an
 - {{jsxref("Global_Objects/Math/min", "Math.min([<var>x</var>[, <var>y</var>[, …]]])")}}
   - : Returns the smallest of zero or more numbers.
 - {{jsxref("Global_Objects/Math/pow", "Math.pow(<var>x</var>, <var>y</var>)")}}
-  - : Returns base `x` to the exponent power `y` (that is, `x^y`).
+  - : Returns base `x` to the exponent power `y` (that is, `x`<sup><code>y</code></sup>).
 - {{jsxref("Global_Objects/Math/random", "Math.random()")}}
   - : Returns a pseudo-random number between `0` and `1`.
 - {{jsxref("Global_Objects/Math/round", "Math.round(<var>x</var>)")}}

@@ -1,6 +1,7 @@
 ---
 title: Magnetometer.x
 slug: Web/API/Magnetometer/x
+page-type: web-api-instance-property
 tags:
   - API
   - Generic Sensor API
@@ -24,28 +25,22 @@ with the policies set on your server. This is not something that would ever be s
 a user. The {{httpheader('Feature-Policy')}} HTTP header article contains implementation
 instructions.
 
-## Syntax
-
-```js
-var magnetometerx = magnetometer.x
-```
-
-### Value
+## Value
 
 A {{jsxref('Number')}}.
 
-## Example
+## Examples
 
-The magnetometer is typically read in the {{domxref('Sensor.onreading')}} event
+The magnetometer is typically read in the {{domxref('Sensor.reading_event', 'reading')}} event
 callback. In the example below this occurs sixty times a second.
 
 ```js
 let magSensor = new Magnetometer({frequency: 60});
 
-magSensor.addEventListener('reading', e => {
-  console.log("Magnetic field along the X-axis " + magSensor.x);
-  console.log("Magnetic field along the Y-axis " + magSensor.y);
-  console.log("Magnetic field along the Z-axis " + magSensor.z);
+magSensor.addEventListener('reading', (e) => {
+  console.log(`Magnetic field along the X-axis ${magSensor.x}`);
+  console.log(`Magnetic field along the Y-axis ${magSensor.y}`);
+  console.log(`Magnetic field along the Z-axis ${magSensor.z}`);
 });
 magSensor.start();
 ```

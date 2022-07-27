@@ -33,19 +33,6 @@ Flags in the `flags` property are sorted alphabetically (from left to right, e.g
 /bar/myu.flags;  // "muy"
 ```
 
-## Polyfill
-
-```js
-if (RegExp.prototype.flags === undefined) {
-  Object.defineProperty(RegExp.prototype, 'flags', {
-    configurable: true,
-    get: function() {
-      return this.toString().match(/[gimsuy]*$/)[0];
-    }
-  });
-}
-```
-
 ## Specifications
 
 {{Specifications}}
@@ -56,5 +43,5 @@ if (RegExp.prototype.flags === undefined) {
 
 ## See also
 
-- A polyfill of `RegExp.prototype.flags` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
+- [Polyfill of `RegExp.prototype.flags` in `core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
 - {{JSxRef("RegExp.prototype.source")}}

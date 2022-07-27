@@ -1,14 +1,16 @@
 ---
 title: Presentation API
 slug: Web/API/Presentation_API
+page-type: web-api-overview
 tags:
   - API
   - Experimental
   - NeedsContent
   - Presentation API
   - Reference
+browser-compat: api.Presentation
 ---
-{{securecontext_header}}{{SeeCompatTable}}{{APIRef("Presentation API")}}
+{{securecontext_header}}{{SeeCompatTable}}{{DefaultAPISidebar("Presentation API")}}
 
 The Presentation API lets a {{Glossary("user agent")}} (such as a Web browser) effectively display web content through large presentation devices such as projectors and network-connected televisions. Supported types of multimedia devices include both displays which are wired using HDMI, DVI, or the like, or wireless, using [DLNA](https://www.dlna.org/), [Chromecast](https://developers.google.com/cast/), [AirPlay](https://developer.apple.com/airplay/), or [Miracast](https://www.wi-fi.org/discover-wi-fi/miracast).
 
@@ -51,17 +53,17 @@ Example codes below highlight the usage of main features of the Presentation API
 <button id="presentBtn" style="display: none;">Present</button>
 <script>
   // The Present button is visible if at least one presentation display is available
-  var presentBtn = document.getElementById("presentBtn");
+  const presentBtn = document.getElementById("presentBtn");
   // It is also possible to use relative presentation URL e.g. "presentation.html"
-  var presUrls = ["http://example.com/presentation.html",
+  const presUrls = ["http://example.com/presentation.html",
                   "http://example.net/alternate.html"];
   // show or hide present button depending on display availability
-  var handleAvailabilityChange = function(available) {
+  const handleAvailabilityChange = function(available) {
     presentBtn.style.display = available ? "inline" : "none";
   };
   // Promise is resolved as soon as the presentation display availability is
   // known.
-  var request = new PresentationRequest(presUrls);
+  const request = new PresentationRequest(presUrls);
   request.getAvailability().then(function(availability) {
     // availability.value may be kept up-to-date by the controlling UA as long
     // as the availability object is alive. It is advised for the web developers
@@ -101,9 +103,9 @@ Example codes below highlight the usage of main features of the Presentation API
 <!-- controller.html -->
 <button id="reconnectBtn" style="display: none;">Reconnect</button>
 <script>
-  var reconnect = function () {
+  const reconnect = function () {
     // read presId from localStorage if exists
-    var presId = localStorage["presId"];
+    const presId = localStorage["presId"];
     // presId is mandatory when reconnecting to a presentation.
     if (!!presId) {
       request.reconnect(presId)
@@ -150,11 +152,11 @@ Example codes below highlight the usage of main features of the Presentation API
   const reconnectBtn = document.querySelector("#reconnectBtn");
   const disconnectBtn = document.querySelector("#disconnectBtn");
 
-  stopBtn.onclick = _ => {
+  stopBtn.onclick = () => {
     connection && connection.terminate();
   };
 
-  disconnectBtn.onclick = _ => {
+  disconnectBtn.onclick = () => {
     connection && connection.close();
   };
 
@@ -183,11 +185,11 @@ Example codes below highlight the usage of main features of the Presentation API
     }
 
     // Monitor the connection state
-    connection.onconnect = _ => {
+    connection.onconnect = () => {
       showConnectedUI();
 
       // Register message handler
-      connection.onmessage = message => {
+      connection.onmessage = (message) => {
         console.log(`Received message: ${message.data}`);
       };
 
@@ -195,12 +197,12 @@ Example codes below highlight the usage of main features of the Presentation API
       connection.send("Say hello");
     };
 
-    connection.onclose = _ => {
+    connection.onclose = () => {
       connection = null;
       showDisconnectedUI();
     };
 
-    connection.onterminate = _ => {
+    connection.onterminate = () => {
       // Remove presId from localStorage if exists
       delete localStorage["presId"];
       connection = null;
@@ -215,9 +217,9 @@ Example codes below highlight the usage of main features of the Presentation API
 ```html
 <!-- presentation.html -->
 <script>
-  var addConnection = function(connection) {
+  const addConnection = function(connection) {
     this.onmessage = function (message) {
-      if (message.data == "say hello")
+      if (message.data === "say hello")
         this.send("hello");
     };
   };
@@ -247,8 +249,8 @@ Example codes below highlight the usage of main features of the Presentation API
 <!-- presentation.html -->
 <script>
   connection.onmessage = function (message) {
-    var messageObj = JSON.parse(message.data);
-    var spanElt = document.createElement("SPAN");
+    const messageObj = JSON.parse(message.data);
+    const spanElt = document.createElement("SPAN");
     spanElt.lang = messageObj.lang;
     spanElt.textContent = messageObj.string;
     document.appendChild(spanElt);
@@ -258,16 +260,12 @@ Example codes below highlight the usage of main features of the Presentation API
 
 ## Specifications
 
-| Specification                                               |
-| ----------------------------------------------------------- |
-| [Presentation API](https://w3c.github.io/presentation-api/) |
+{{Specifications}}
 
 ## Browser compatibility
 
-### `Presentation`
-
-{{Compat("api.Presentation")}}
+{{Compat}}
 
 ## See also
 
-[Presentation API polyfill](https://mediascape.github.io/presentation-api-polyfill/) contains a JavaScript polyfill of the [Presentation API](https://w3c.github.io/presentation-api/) specification under standardisation within the [Second Screen Working Group](https://www.w3.org/2014/secondscreen/) at W3C. The polyfill is mostly intended for exploring how the Presentation API may be implemented on top of different presentation mechanisms.
+[Presentation API polyfill](https://mediascape.github.io/presentation-api-polyfill/) contains a JavaScript polyfill of the [Presentation API](https://w3c.github.io/presentation-api/) specification under standardization within the [Second Screen Working Group](https://www.w3.org/2014/secondscreen/) at W3C. The polyfill is mostly intended for exploring how the Presentation API may be implemented on top of different presentation mechanisms.

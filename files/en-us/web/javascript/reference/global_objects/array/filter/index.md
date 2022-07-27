@@ -13,7 +13,7 @@ browser-compat: javascript.builtins.Array.filter
 ---
 {{JSRef}}
 
-The **`filter()`** method **creates a new array** with all elements that pass the test implemented by the provided function.
+The **`filter()`** method creates a [shallow copy](/en-US/docs/Glossary/Shallow_copy) of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided function.
 
 {{EmbedInteractiveExample("pages/js/array-filter.html","shorter")}}
 
@@ -21,19 +21,19 @@ The **`filter()`** method **creates a new array** with all elements that pass th
 
 ```js
 // Arrow function
-filter((element) => { /* ... */ } )
-filter((element, index) => { /* ... */ } )
-filter((element, index, array) => { /* ... */ } )
+filter((element) => { /* … */ } )
+filter((element, index) => { /* … */ } )
+filter((element, index, array) => { /* … */ } )
 
 // Callback function
 filter(callbackFn)
 filter(callbackFn, thisArg)
 
 // Inline callback function
-filter(function(element) { /* ... */ })
-filter(function(element, index) { /* ... */ })
-filter(function(element, index, array){ /* ... */ })
-filter(function(element, index, array) { /* ... */ }, thisArg)
+filter(function(element) { /* … */ })
+filter(function(element, index) { /* … */ })
+filter(function(element, index, array){ /* … */ })
+filter(function(element, index, array) { /* … */ }, thisArg)
 ```
 
 ### Parameters
@@ -42,21 +42,21 @@ filter(function(element, index, array) { /* ... */ }, thisArg)
 
   - : Function is a predicate, to test each element of the array. Return a value that coerces to `true` to keep the element, or to `false` otherwise.
 
-    It accepts three arguments:
+    The function is called with the following arguments:
 
     - `element`
       - : The current element being processed in the array.
-    - `index`{{optional_inline}}
+    - `index`
       - : The index of the current element being processed in the array.
-    - `array`{{optional_inline}}
+    - `array`
       - : The array on which `filter()` was called.
 
-- `thisArg`{{optional_inline}}
+- `thisArg` {{optional_inline}}
   - : Value to use as `this` when executing `callbackFn`.
 
 ### Return value
 
-A new array with the elements that pass the test. If no elements pass the test, an empty array will be returned.
+A [shallow copy](/en-US/docs/Glossary/Shallow_copy) of a portion of the given array, filtered down to just the elements from the given array that pass the test implemented by the provided function. If no elements pass the test, an empty array will be returned.
 
 ## Description
 
@@ -64,9 +64,9 @@ A new array with the elements that pass the test. If no elements pass the test, 
 
 `callbackFn` is invoked with three arguments:
 
-1.  the value of the element
-2.  the index of the element
-3.  the Array object being traversed
+1. the value of the element
+2. the index of the element
+3. the Array object being traversed
 
 If a `thisArg` parameter is provided to `filter`, it will be used as the callback's `this` value. Otherwise, the value `undefined` will be used as its `this` value. The `this` value ultimately observable by `callbackFn` is determined according to [the usual rules for determining the `this` seen by a function](/en-US/docs/Web/JavaScript/Reference/Operators/this).
 
@@ -112,7 +112,7 @@ console.log(array.filter(isPrime)); // [2, 3, 5, 7, 11, 13]
 
 ### Filtering invalid entries from JSON
 
-The following example uses `filter()` to create a filtered json of all elements with non-zero, numeric `id`.
+The following example uses `filter()` to create a filtered JSON of all elements with non-zero, numeric `id`.
 
 ```js
 let arr = [
@@ -176,7 +176,7 @@ const fruits = ['apple', 'banana', 'grapes', 'mango', 'orange']
  * Filter array items based on search criteria (query)
  */
 const filterItems = (arr, query) => {
-  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+  return arr.filter((el) => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)
 }
 
 console.log(filterItems(fruits, 'ap'))  // ['apple', 'grapes']
@@ -185,13 +185,13 @@ console.log(filterItems(fruits, 'an'))  // ['banana', 'mango', 'orange']
 
 ### Affecting Initial Array (modifying, appending and deleting)
 
-The following examples tests the behavior of the `filter` method when the array is modified.
+The following example tests the behavior of the `filter` method when the array is modified.
 
 ```js
-// Modifying each words
+// Modifying each word
 let words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present']
 
-const modifiedWords = words.filter( (word, index, arr) => {
+const modifiedWords = words.filter((word, index, arr) => {
   arr[index+1] +=' extra'
   return word.length < 6
 })
@@ -202,7 +202,7 @@ console.log(modifiedWords)
 
 // Appending new words
 words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present']
-const appendedWords = words.filter( (word, index, arr) => {
+const appendedWords = words.filter((word, index, arr) => {
   arr.push('new')
   return word.length < 6
 })
@@ -213,13 +213,13 @@ console.log(appendedWords)
 
 // Deleting words
 words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present']
-const deleteWords = words.filter( (word, index, arr) => {
+const deleteWords = words.filter((word, index, arr) => {
   arr.pop()
   return word.length < 6
 })
 
 console.log(deleteWords)
-// Notice 'elite' is not even obtained as its been popped off `words` before filter can even get there
+// Notice 'elite' is not even obtained as it’s been popped off 'words' before filter can even get there
 // ["spray" ,"limit"]
 ```
 
@@ -233,7 +233,7 @@ console.log(deleteWords)
 
 ## See also
 
-- A polyfill of `Array.prototype.filter` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-array)
+- [Polyfill of `Array.prototype.filter` in `core-js`](https://github.com/zloirock/core-js#ecmascript-array)
 - {{jsxref("Array.prototype.forEach()")}}
 - {{jsxref("Array.prototype.every()")}}
 - {{jsxref("Array.prototype.some()")}}

@@ -1,6 +1,7 @@
 ---
 title: Navigator.mediaDevices
 slug: Web/API/Navigator/mediaDevices
+page-type: web-api-instance-property
 tags:
   - Media
   - Media Capture and Streams API
@@ -13,7 +14,7 @@ tags:
   - Web
 browser-compat: api.Navigator.mediaDevices
 ---
-{{securecontext_header}}{{APIRef("Media Capture and Streams")}}
+{{securecontext_header}}{{DefaultAPISidebar("Media Capture and Streams")}}
 
 The **`Navigator.mediaDevices`** read-only property returns a
 {{domxref("MediaDevices")}} object, which provides access to connected media input
@@ -22,7 +23,7 @@ devices like cameras and microphones, as well as screen sharing.
 ## Syntax
 
 ```js
-var mediaDevices = navigator.mediaDevices;
+const mediaDevices = navigator.mediaDevices;
 ```
 
 ### Return value

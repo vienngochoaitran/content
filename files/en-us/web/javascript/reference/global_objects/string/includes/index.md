@@ -51,30 +51,15 @@ expression returns `false`:
 'Blue Whale'.includes('blue')  // returns false
 ```
 
-## Polyfill
-
-This method has been added to the ECMAScript 2015 specification and may not be
-available in all JavaScript implementations yet.
-
-However, you can easily polyfill this method:
+You can work around this constraint by transforming both the original string and the search string to all lowercase:
 
 ```js
-if (!String.prototype.includes) {
-  String.prototype.includes = function(search, start) {
-    'use strict';
-
-    if (search instanceof RegExp) {
-      throw TypeError('first argument must not be a RegExp');
-    }
-    if (start === undefined) { start = 0; }
-    return this.indexOf(search, start) !== -1;
-  };
-}
+'Blue Whale'.toLowerCase().includes('blue')  // returns true
 ```
 
 ## Examples
 
-### Using `includes()`
+### Using includes()
 
 ```js
 const str = 'To be, or not to be, that is the question.'
@@ -97,7 +82,7 @@ console.log(str.includes(''))             // true
 
 ## See also
 
-- A polyfill of `String.prototype.includes` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
+- [Polyfill of `String.prototype.includes` in `core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
 - {{jsxref("Array.prototype.includes()")}}
 - {{jsxref("TypedArray.prototype.includes()")}}
 - {{jsxref("String.prototype.indexOf()")}}

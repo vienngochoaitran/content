@@ -34,11 +34,10 @@ This method exists for customizing match behavior within {{jsxref("RegExp")}} su
 ### Using Symbol.matchAll
 
 ```js
-let re = /[0-9]+/g;
-let str = '2016-01-02|2019-03-07';
+const str = '2016-01-02|2019-03-07';
 
 const numbers = {
-  *[Symbol.matchAll] (str) {
+  *[Symbol.matchAll](str) {
     for (const n of str.matchAll(/[0-9]+/g))
       yield n[0];
   }
@@ -60,6 +59,6 @@ See {{jsxref("String.prototype.matchAll()")}} and {{jsxref("RegExp.@@matchAll", 
 
 ## See also
 
-- A polyfill of `Symbol.matchAll` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-symbol)
+- [Polyfill of `Symbol.matchAll` in `core-js`](https://github.com/zloirock/core-js#ecmascript-symbol)
 - {{jsxref("String.prototype.matchAll()")}}
 - {{jsxref("RegExp.@@matchAll", "RegExp.prototype[@@matchAll]()")}}

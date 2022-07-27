@@ -1,6 +1,7 @@
 ---
 title: XRJointSpace
 slug: Web/API/XRJointSpace
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -13,7 +14,9 @@ browser-compat: api.XRJointSpace
 ---
 {{APIRef("WebXR Device API")}}
 
-The **`XRJointSpace`** interface is an {{domxref("XRSpace")}} and represents the position and orientation of an {{domxref("XRHand")}} joint.
+The **`XRJointSpace`** interface is an {{domxref("XRSpace")}} and represents the position and orientation of an {{domxref("XRHand")}} joint.
+
+{{InheritanceDiagram}}
 
 ## Properties
 
@@ -28,11 +31,11 @@ You can use an `XRJointSpace` object and an {{domxref("XRReferenceSpace")}} to g
 
 ```js
 navigator.xr.requestSession({optionalFeatures: ["hand-tracking"]}).then(
-  // ...
+  // …
 );
 
 function renderFrame(session, frame) {
-   // ...
+   // …
 
    for (inputSource of session.inputSources) {
       if (inputSource.hand) {

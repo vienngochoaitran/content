@@ -1,6 +1,7 @@
 ---
 title: SerialPort
 slug: Web/API/SerialPort
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -8,11 +9,11 @@ tags:
   - SerialPort
 browser-compat: api.SerialPort
 ---
-{{securecontext_header}}{{DefaultAPISidebar("Serial API")}}
-
-## Description
+{{securecontext_header}}{{APIRef("Serial API")}}
 
 The `SerialPort` interface of the {{domxref("Web_Serial_API", "Web Serial API")}} provides access to a serial port on the host device.
+
+{{InheritanceDiagram}}
 
 ## Constructor
 
@@ -20,17 +21,10 @@ Instances of this interface may be obtained by calling methods of the {{domxref(
 
 ## Properties
 
-- {{domxref("SerialPort.readable")}}{{readonlyInline}}
+- {{domxref("SerialPort.readable")}} {{readonlyInline}}
   - : Returns a {{domxref("ReadableStream")}} for receiving data from the device connected to the port.
-- {{domxref("SerialPort.writable")}}{{readonlyInline}}
+- {{domxref("SerialPort.writable")}} {{readonlyInline}}
   - : Returns a {{domxref("WritableStream")}} for sending data to the device connected to the port.
-
-### Event handlers
-
-- {{domxref("SerialPort.onconnect")}}
-  - : An event handler called when the port has connected to the device.
-- {{domxref("SerialPort.ondisconnect")}}
-  - : An event handler called when the port has disconnected from the device.
 
 ## Methods
 
@@ -45,6 +39,13 @@ Instances of this interface may be obtained by calling methods of the {{domxref(
 - {{domxref("SerialPort.close()")}}
   - : Returns a {{jsxref("Promise")}} that resolves when the port closes.
 
+## Events
+
+- {{domxref("SerialPort.connect_event", "connect")}}
+  - : An event fired when the port has connected to the device.
+- {{domxref("SerialPort.disconnect_event", "disconnect")}}
+  - : An event fired when the port has disconnected from the device.
+
 ## Examples
 
 ### Opening a port
@@ -52,7 +53,7 @@ Instances of this interface may be obtained by calling methods of the {{domxref(
 Before communicating on a serial port it must be opened. Opening the port allows the site to specify the necessary parameters that control how data is transmitted and received. Developers should check the documentation for the device they are connecting to for the appropriate parameters.
 
 ```js
-await port.open({ baudRate: /* pick your baud rate */ });
+await port.open({ baudRate: 9600 /* pick your baud rate */ });
 ```
 
 Once the `Promise` returned by `open()` resolves the `readable` and `writable` attributes can be accessed to get the {{domxref("ReadableStream")}} and {{domxref("WritableStream")}} instances for receiving data from and sending data to the connected device.
@@ -71,10 +72,10 @@ while (port.readable) {
         // |reader| has been canceled.
         break;
       }
-      // Do something with |value|...
+      // Do something with |value|…
     }
   } catch (error) {
-    // Handle |error|...
+    // Handle |error|…
   } finally {
     reader.releaseLock();
   }

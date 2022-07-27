@@ -1,6 +1,7 @@
 ---
 title: Web audio spatialization basics
 slug: Web/API/Web_Audio_API/Web_audio_spatialization_basics
+page-type: guide
 tags:
   - PannerNode
   - Web Audio API
@@ -18,7 +19,7 @@ Think sounds flying over you, creeping up behind you, moving across in front of 
 That sort of thing.
 
 It's really useful for WebXR and gaming.
-In 3D spaces, it's the only way to achieve realistic audio. Libraries like [three.js](https://threejs.org/) and [A-frame](https://aframe.io/) harness its potential when dealing with sound.
+In 3D spaces, it's the only way to achieve realistic audio. Libraries like [three.js](https://threejs.org/) and [A-frame](https://aframe.io/) harness its potential when dealing with sound.
 It's worth noting that you don't _have_ to move sound within a full 3D space either — you could stick with just a 2D plane, so if you were planning a 2D game, this would still be the node you were looking for.
 
 > **Note:** There's also a {{domxref("StereoPannerNode")}} designed to deal with the common use case of creating simple left and right stereo panning effects.
@@ -28,7 +29,7 @@ It's worth noting that you don't _have_ to move sound within a full 3D space eit
 ## 3D boombox demo
 
 To demonstrate 3D spatialization we've created a modified version of the boombox demo we created in our basic [Using the Web Audio API](/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API) guide.
-See the [3D spatialization demo live](https://mdn.github.io/webaudio-examples/spacialization/) (and see the [source code](https://github.com/mdn/webaudio-examples/tree/master/spacialization) also).
+See the [3D spatialization demo live](https://mdn.github.io/webaudio-examples/spatialization/) (and see the [source code](https://github.com/mdn/webaudio-examples/tree/master/spatialization) also).
 
 ![A simple UI with a rotated boombox and controls to move it left and right and in and out, and rotate it.](web-audio-spatialization.png)
 
@@ -61,7 +62,7 @@ listener.positionY.value = posY;
 listener.positionZ.value = posZ-5;
 ```
 
-We could move the listener left or right using `positionX`, up or down using `positionY`, or in or out of the room using `positionZ`. Here we are setting the listener to be in the middle of the viewport and slightly in front of our boombox. We can also set the direction the listener is facing. The default values for these work well:
+We could move the listener left or right using `positionX`, up or down using `positionY`, or in or out of the room using `positionZ`. Here we are setting the listener to be in the middle of the viewport and slightly in front of our boombox. We can also set the direction the listener is facing. The default values for these work well:
 
 ```js
 listener.forwardX.value = 0;
@@ -185,7 +186,7 @@ Finally, we'll set some bounds so our boombox doesn't move too far in any direct
 const moveControls = document.querySelector('#move-controls').querySelectorAll('button');
 const boombox = document.querySelector('.boombox-body');
 
-// the values for our css transforms
+// the values for our CSS transforms
 let transform = {
     xAxis: 0,
     yAxis: 0,
@@ -272,7 +273,7 @@ const q = Math.PI/rotationRate; //rotation increment in radians
 We can also use this to work out degrees rotated, which will help with the CSS transforms we will have to create (note we need both an x and y-axis for the CSS transforms):
 
 ```js
-// get degrees for css
+// get degrees for CSS
 const degreesX = (q * 180)/Math.PI;
 const degreesY = (q * 180)/Math.PI;
 ```
@@ -417,11 +418,15 @@ function moveBoombox(direction, prevMove) {
         break;
     }
 
-  boombox.style.transform = 'translateX('+transform.xAxis+'px) translateY('+transform.yAxis+'px) scale('+transform.zAxis+') rotateY('+transform.rotateY+'deg) rotateX('+transform.rotateX+'deg)';
+  boombox.style.transform = `translateX(${transform.xAxis}px) ` +
+    `translateY(${transform.yAxis}px) ` +
+    `scale(${transform.zAxis}) ` +
+    `rotateY(${transform.rotateY}deg) ` +
+    `rotateX(${transform.rotateX}deg)`;
 
   const move = prevMove || {};
   move.frameId = requestAnimationFrame(() => moveBoombox(direction, move));
-    return move;
+  return move;
 }
 ```
 
@@ -436,19 +441,19 @@ moveControls.forEach(function(el) {
     let moving;
     el.addEventListener('mousedown', function() {
 
-        let direction = this.dataset.control;
-        if (moving && moving.frameId) {
-            window.cancelAnimationFrame(moving.frameId);
-        }
-        moving = moveBoombox(direction);
+        let direction = this.dataset.control;
+        if (moving && moving.frameId) {
+            window.cancelAnimationFrame(moving.frameId);
+        }
+        moving = moveBoombox(direction);
 
-    }, false);
+    }, false);
 
-    window.addEventListener('mouseup', function() {
-        if (moving && moving.frameId) {
-            window.cancelAnimationFrame(moving.frameId);
-        }
-    }, false)
+    window.addEventListener('mouseup', function() {
+        if (moving && moving.frameId) {
+            window.cancelAnimationFrame(moving.frameId);
+        }
+    }, false)
 
 })
 ```
@@ -458,7 +463,7 @@ moveControls.forEach(function(el) {
 Our HTML contains the audio element we want to be affected by the panner node.
 
 ```html
-<audio src="myCoolTrack.mp3"></audio>
+<audio src="myCoolTrack.mp3"></audio>
 ```
 
 We need to grab the source from that element and pipe it into the Web Audio API using the {{domxref('AudioContext.createMediaElementSource')}}.
@@ -517,7 +522,7 @@ The values can be hard to manipulate sometimes and depending on your use case it
 > The panner node does some very involved maths under the hood;
 > there are a [number of tests here](https://wpt.fyi/results/webaudio/the-audio-api/the-pannernode-interface?label=stable&aligned=true) so you can keep track of the status of the inner workings of this node across different platforms.
 
-Again, you can [check out the final demo here](https://mdn.github.io/webaudio-examples/spacialization/), and the [final source code is here](https://github.com/mdn/webaudio-examples/tree/master/spacialization).
+Again, you can [check out the final demo here](https://mdn.github.io/webaudio-examples/spatialization/), and the [final source code is here](https://github.com/mdn/webaudio-examples/tree/master/spatialization).
 There is also a [Codepen demo too](https://codepen.io/Rumyra/pen/MqayoK?editors=0100).
 
 If you are working with 3D games and/or WebXR it's a good idea to harness a 3D library to create such functionality, rather than trying to do this all yourself from first principles.

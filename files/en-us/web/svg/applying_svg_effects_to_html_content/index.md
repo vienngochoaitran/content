@@ -7,7 +7,7 @@ tags:
   - HTML
   - SVG
 ---
-Modern browsers support using [SVG](/en-US/docs/SVG) within [CSS](/en-US/docs/Web/CSS) styles to apply graphical effects to HTML content.
+Modern browsers support using [SVG](/en-US/docs/Web/SVG) within [CSS](/en-US/docs/Web/CSS) styles to apply graphical effects to HTML content.
 
 You may specify SVG in styles either within the same document or an external style sheet. There are 3 properties you can use: [`mask`](/en-US/docs/Web/CSS/mask), [`clip-path`](/en-US/docs/Web/CSS/clip-path), and [`filter`](/en-US/docs/Web/CSS/filter).
 
@@ -53,7 +53,7 @@ p {
 
 Note that in the CSS, the mask is specified using a URL to the ID `#mask-1`, which is the ID of the SVG mask specified below it. Everything else specifies details about the gradient mask itself.
 
-Applying the SVG effect to (X)HTML is accomplished by assigning the `target` class defined above to an element, like this:
+Applying the SVG effect to HTML is accomplished by assigning the `target` class defined above to an element, like this:
 
 ```html
 <p class="target" style="background:lime;">
@@ -62,8 +62,8 @@ Applying the SVG effect to (X)HTML is accomplished by assigning the `target` cla
 </p>
 <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing
-    <b class="target">elit, sed do eiusmod tempor incididunt
-    ut labore et dolore magna aliqua.</b>
+    <em class="target">elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.</em>
     Ut enim ad minim veniam.
 </p>
 ```
@@ -83,8 +83,8 @@ This example demonstrates using SVG to clip HTML content. Notice that even the c
 </p>
 <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing
-    <b class="target">elit, sed do eiusmod tempor incididunt
-    ut labore et dolore magna aliqua.</b>
+    <em class="target">elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.</em>
     Ut enim ad minim veniam.
 </p>
 
@@ -116,7 +116,7 @@ You can make changes to the SVG in real time and see them immediately affect the
 ```js
 function toggleRadius() {
   var circle = document.getElementById("circle");
-  circle.r.baseVal.value = 0.40 - circle.r.baseVal.value;
+  circle.r.baseVal.value = 0.40 - circle.r.baseVal.value;
 }
 ```
 
@@ -134,8 +134,8 @@ This demonstrates applying a filter to HTML content using SVG. It establishes se
 <pre class="target">lorem</pre>
 <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing
-    <b class="target">elit, sed do eiusmod tempor incididunt
-    ut labore et dolore magna aliqua.</b>
+    <em class="target">elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.</em>
     Ut enim ad minim veniam.
 </p>
 ```
@@ -168,20 +168,20 @@ And some more filters:
 ```html
 <svg height="0">
   <filter id="f3">
-    <feConvolveMatrix filterRes="100 100" style="color-interpolation-filters:sRGB"
-      order="3" kernelMatrix="0 -1 0   -1 4 -1   0 -1 0" preserveAlpha="true"/>
-  </filter>
+    <feConvolveMatrix filterRes="100 100" style="color-interpolation-filters:sRGB"
+      order="3" kernelMatrix="0 -1 0   -1 4 -1   0 -1 0" preserveAlpha="true"/>
+  </filter>
   <filter id="f4">
-    <feSpecularLighting surfaceScale="5" specularConstant="1"
-                        specularExponent="10" lighting-color="white">
-      <fePointLight x="-5000" y="-10000" z="20000"/>
-    </feSpecularLighting>
+    <feSpecularLighting surfaceScale="5" specularConstant="1"
+                        specularExponent="10" lighting-color="white">
+      <fePointLight x="-5000" y="-10000" z="20000"/>
+    </feSpecularLighting>
   </filter>
   <filter id="f5">
-    <feColorMatrix values="1 0 0 0 0
-                           0 1 0 0 0
-                           0 0 1 0 0
-                           0 1 0 0 0" style="color-interpolation-filters:sRGB"/>
+    <feColorMatrix values="1 0 0 0 0
+                           0 1 0 0 0
+                           0 0 1 0 0
+                           0 1 0 0 0" style="color-interpolation-filters:sRGB"/>
   </filter>
 </svg>
 ```
@@ -191,8 +191,8 @@ The five filters are applied using the following CSS:
 ```css
 p.target { filter:url(#f3); }
 p.target:hover { filter:url(#f5); }
-b.target { filter:url(#f1); }
-b.target:hover { filter:url(#f4); }
+em.target { filter:url(#f1); }
+em.target:hover { filter:url(#f4); }
 pre.target { filter:url(#f2); }
 pre.target:hover { filter:url(#f3); }
 ```
@@ -232,7 +232,7 @@ By creating the text using SVG elements combined with HTML you can make a variet
 
 ```html
 <svg height="60" width="200">
-  <text x="0" y="15" fill="blue" transform="rotate(30 20,50)">Example text</text>
+  <text x="0" y="15" fill="blue" transform="rotate(30 20,50)">Example text</text>
 </svg>
 ```
 
@@ -250,5 +250,5 @@ The SVG is then imported from a file named `resources.svg`, using the clip path 
 
 ## See also
 
-*   [SVG](/en-US/docs/SVG)
-*   [SVG Effects for HTML Content](http://robert.ocallahan.org/2008/06/applying-svg-effects-to-html-content\_04.html) (blog post)
+- [SVG](/en-US/docs/Web/SVG)
+- [SVG Effects for HTML Content](https://robert.ocallahan.org/2008/06/applying-svg-effects-to-html-content_04.html) (blog post)

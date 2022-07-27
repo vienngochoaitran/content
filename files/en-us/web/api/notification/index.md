@@ -1,6 +1,7 @@
 ---
 title: Notification
 slug: Web/API/Notification
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -14,6 +15,8 @@ browser-compat: api.Notification
 The `Notification` interface of the [Notifications API](/en-US/docs/Web/API/Notifications_API) is used to configure and display desktop notifications to the user.
 
 These notifications' appearance and specific functionality vary across platforms but generally they provide a way to asynchronously provide information to the user.
+
+{{InheritanceDiagram}}
 
 ## Constructor
 
@@ -48,7 +51,7 @@ These properties are available only on instances of the `Notification` object.
 - {{domxref("Notification.body")}} {{readonlyinline}}
   - : The body string of the notification as specified in the constructor's `options` parameter.
 - {{domxref("Notification.data")}} {{readonlyinline}}
-  - : Returns a structured clone of the notification’s data.
+  - : Returns a structured clone of the notification's data.
 - {{domxref("Notification.dir")}} {{readonlyinline}}
   - : The text direction of the notification as specified in the constructor's `options` parameter.
 - {{domxref("Notification.lang")}} {{readonlyinline}}
@@ -72,17 +75,6 @@ These properties are available only on instances of the `Notification` object.
 - {{domxref("Notification.vibrate")}} {{readonlyinline}}
   - : Specifies a vibration pattern for devices with vibration hardware to emit.
 
-#### Event handlers
-
-- {{domxref("Notification.onclick")}}
-  - : A handler for the {{domxref("Element/click_event", "click")}} event. It is triggered each time the user clicks on the notification.
-- {{domxref("Notification.onclose")}}
-  - : A handler for the {{domxref("HTMLDialogElement/close_event", "close")}} event. It is triggered when the user closes the notification.
-- {{domxref("Notification.onerror")}}
-  - : A handler for the {{domxref("Element/error_event", "error")}} event. It is triggered each time the notification encounters an error.
-- {{domxref("Notification.onshow")}}
-  - : A handler for the {{domxref("Element/show_event", "show")}} event. It is triggered when the notification is displayed.
-
 ## Methods
 
 ### Static methods
@@ -98,6 +90,17 @@ These properties are available only on an instance of the `Notification` object 
 
 - {{domxref("Notification.close()")}}
   - : Programmatically closes a notification instance.
+
+## Events
+
+- {{domxref("Notification.click_event", "click")}}
+  - : Fires when the user clicks the notification.
+- {{domxref("Notification.close_event", "close")}}
+  - : Fires when the user closes the notification.
+- {{domxref("Notification.error_event", "error")}}
+  - : Fires when the notification encounters an error.
+- {{domxref("Notification.show_event", "show")}}
+  - : Fires when the notification is displayed.
 
 ## Examples
 
@@ -119,7 +122,7 @@ function notifyMe() {
   // Let's check whether notification permissions have already been granted
   else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
-    var notification = new Notification("Hi there!");
+    let notification = new Notification("Hi there!");
   }
 
   // Otherwise, we need to ask the user for permission
@@ -127,13 +130,13 @@ function notifyMe() {
     Notification.requestPermission().then(function (permission) {
       // If the user accepts, let's create a notification
       if (permission === "granted") {
-        var notification = new Notification("Hi there!");
+        let notification = new Notification("Hi there!");
       }
     });
   }
 
   // At last, if the user has denied notifications, and you
-  // want to be respectful there is no need to bother them any more.
+  // want to be respectful there is no need to bother them anymore.
 }
 ```
 

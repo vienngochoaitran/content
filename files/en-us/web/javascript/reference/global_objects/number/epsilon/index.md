@@ -19,7 +19,7 @@ You do not have to create a {{jsxref("Number")}} object to access this static pr
 
 ## Description
 
-The `EPSILON` property has a value of approximately `2.2204460492503130808472633361816E-16`, or `2^-52`.
+The `EPSILON` property has a value of approximately `2.2204460492503130808472633361816E-16`, or 2<sup>-52</sup>.
 
 ## Examples
 
@@ -32,14 +32,6 @@ z = 0.1;
 equal = (Math.abs(x - y + z) < Number.EPSILON);
 ```
 
-## Polyfill
-
-```js
-if (Number.EPSILON === undefined) {
-    Number.EPSILON = Math.pow(2, -52);
-}
-```
-
 ## Specifications
 
 {{Specifications}}
@@ -50,5 +42,5 @@ if (Number.EPSILON === undefined) {
 
 ## See also
 
-- A polyfill of `Number.EPSILON` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-number)
+- [Polyfill of `Number.EPSILON` in `core-js`](https://github.com/zloirock/core-js#ecmascript-number)
 - The {{jsxref("Number")}} object it belongs to

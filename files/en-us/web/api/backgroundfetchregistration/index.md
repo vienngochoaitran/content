@@ -1,6 +1,7 @@
 ---
 title: BackgroundFetchRegistration
 slug: Web/API/BackgroundFetchRegistration
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -8,29 +9,31 @@ tags:
   - BackgroundFetchRegistration
 browser-compat: api.BackgroundFetchRegistration
 ---
-{{DefaultAPISidebar("Background Fetch API")}}
+{{APIRef("Background Fetch API")}}
 
 The **`BackgroundFetchRegistration`** interface of the {{domxref('Background Fetch API','','',' ')}} represents an individual background fetch.
 
 A `BackgroundFetchRegistration` instance is returned by the {{domxref("BackgroundFetchManager.fetch()")}} or {{domxref("BackgroundFetchManager.get()")}} methods, and therefore there has no constructor.
 
+{{InheritanceDiagram}}
+
 ## Properties
 
 The following properties are available synchronously, as convenience properties copied from those in the `BackgroundFetchRegistration` instance.
 
-- {{domxref("BackgroundFetchRegistration.id")}}{{ReadOnlyInline}}
-  - : A {{domxref("DOMString","string")}} containing the background fetch's ID.
-- {{domxref("BackgroundFetchRegistration.uploadTotal")}}{{ReadOnlyInline}}
+- {{domxref("BackgroundFetchRegistration.id")}} {{ReadOnlyInline}}
+  - : A string containing the background fetch's ID.
+- {{domxref("BackgroundFetchRegistration.uploadTotal")}} {{ReadOnlyInline}}
   - : A {{jsxref("number")}} containing the total number of bytes to be uploaded.
-- {{domxref("BackgroundFetchRegistration.uploaded")}}{{ReadOnlyInline}}
+- {{domxref("BackgroundFetchRegistration.uploaded")}} {{ReadOnlyInline}}
   - : A {{jsxref("number")}} containing the size in bytes successfully sent, initially `0`.
-- {{domxref("BackgroundFetchRegistration.downloadTotal")}}{{ReadOnlyInline}}
+- {{domxref("BackgroundFetchRegistration.downloadTotal")}} {{ReadOnlyInline}}
   - : A {{jsxref("number")}} containing the total size in bytes of this download. This is the value set when the background fetch was registered, or `0`.
-- {{domxref("BackgroundFetchRegistration.downloaded")}}{{ReadOnlyInline}}
+- {{domxref("BackgroundFetchRegistration.downloaded")}} {{ReadOnlyInline}}
   - : A {{jsxref("number")}} containing the size in bytes that has been downloaded, initially `0`.
-- {{domxref("BackgroundFetchRegistration.result")}}{{ReadOnlyInline}}
+- {{domxref("BackgroundFetchRegistration.result")}} {{ReadOnlyInline}}
   - : Returns an empty string initially, on completion either the string `"success"` or `"failure"`.
-- {{domxref("BackgroundFetchRegistration.failureReason")}}{{ReadOnlyInline}}
+- {{domxref("BackgroundFetchRegistration.failureReason")}} {{ReadOnlyInline}}
 
   - : One of the following strings:
 
@@ -47,19 +50,8 @@ The following properties are available synchronously, as convenience properties 
     - `"download-total-exceeded"`
       - : The provided `downloadTotal` was exceeded. This value was set when the background fetch was registered.
 
-- {{domxref("BackgroundFetchRegistration.recordsAvailable")}}{{ReadOnlyInline}}
+- {{domxref("BackgroundFetchRegistration.recordsAvailable")}} {{ReadOnlyInline}}
   - : A {{jsxref("boolean")}} indicating whether the `recordsAvailable` flag is set.
-
-### Event handlers
-
-- {{domxref("BackgroundFetchRegistration.onprogress")}}
-
-  - : Fired when there is a change to any of the following properties:
-
-    - `uploaded`
-    - `downloaded`
-    - `result`
-    - `failureReason`
 
 ## Methods
 
@@ -69,6 +61,18 @@ The following properties are available synchronously, as convenience properties 
   - : Returns a single {{domxref("BackgroundFetchRecord")}} object which is the first match for the arguments.
 - {{domxref("BackgroundFetchRegistration.matchAll","BackgroundFetchRegistration.matchAll()")}}
   - : Returns a {{jsxref("Promise")}} that resolves with an array of {{domxref("BackgroundFetchRecord")}} objects containing requests and responses.
+
+## Events
+
+Listen to these events using [`addEventListener()`](/en-US/docs/Web/API/EventTarget/addEventListener) or by assigning an event listener to the `oneventname` property of this interface.
+
+- [`progress`](/en-US/docs/Web/API/BackgroundFetchRegistration/progress_event)
+
+  - : Fired when there is a change to any of the following properties:
+    {{domxref("BackgroundFetchRegistration.uploaded", "uploaded")}},
+    {{domxref("BackgroundFetchRegistration.downloaded", "downloaded")}},
+    {{domxref("BackgroundFetchRegistration.result", "result")}} or
+    {{domxref("BackgroundFetchRegistration.failureReason", "failureReason")}}.
 
 ## Examples
 

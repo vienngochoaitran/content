@@ -159,7 +159,7 @@ It also provides examples, browser compatibility information, and other importan
 
 A **conceptual page** is a _guide_ page that explains or teaches something.
 Generally, if a page contains primarily prose, and doesn't fall into another page type, it's probably a conceptual page.
-An extended discussion of a topic might be spread across multiple conceptual pages, and linked using [Next](https://github.com/mdn/kumascript/blob/master/macros/Next.ejs) and [Previous](https://github.com/mdn/kumascript/blob/master/macros/Previous.ejs) macros.
+An extended discussion of a topic might be spread across multiple conceptual pages, and linked using [Next](https://github.com/mdn/yari/blob/main/kumascript/macros/Next.ejs) and [Previous](https://github.com/mdn/yari/blob/main/kumascript/macros/Previous.ejs) macros.
 
 ### Examples
 
@@ -190,7 +190,7 @@ A **landing page** serves as a menu, of sorts, for its subpages, and is therefor
 A landing page layout is typically used for the root page of a tree of pages about a particular topic.
 It opens with a brief summary of the topic, then presents a structured list of links to its subpages, and optionally, additional material that be useful to the reader.
 
-The list of subpages can be generated automatically using the templates [`SubpagesWithSummaries`](https://github.com/mdn/yari/blob/main/kumascript/macros/SubpagesWithSummaries.ejs), [`SubpageMenuByCategories`](https://github.com/mdn/yari/tree/main/kumascript/macros/SubpageMenuByCategories.ejs), and [`LandingPageListSubpages`](https://github.com/mdn/yari/blob/main/kumascript/macros/LandingPageListSubpages.ejs). However, in more complex cases, the list may need to be created (and maintained!) by hand.
+The list of subpages can be generated automatically using the templates [`SubpagesWithSummaries`](https://github.com/mdn/yari/blob/main/kumascript/macros/SubpagesWithSummaries.ejs), and [`LandingPageListSubpages`](https://github.com/mdn/yari/blob/main/kumascript/macros/LandingPageListSubpages.ejs). However, in more complex cases, the list may need to be created (and maintained!) by hand.
 
 ### Examples
 

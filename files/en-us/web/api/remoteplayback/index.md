@@ -1,6 +1,7 @@
 ---
 title: RemotePlayback
 slug: Web/API/RemotePlayback
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -12,9 +13,11 @@ browser-compat: api.RemotePlayback
 
 The **`RemotePlayback`** interface of the {{domxref('Remote Playback API','','',' ')}} allows the page to detect availability of remote playback devices, then connect to and control playing on these devices.
 
+{{InheritanceDiagram}}
+
 ## Properties
 
-- {{domxref("RemotePlayback.state")}}{{ReadOnlyInline}}
+- {{domxref("RemotePlayback.state")}} {{ReadOnlyInline}}
 
   - : Represents the `RemotePlayback` connection's state. One of:
 
@@ -25,15 +28,6 @@ The **`RemotePlayback`** interface of the {{domxref('Remote Playback API','','',
     - `"disconnected"`
       - : The remote playback has not been initiated, has failed to initiate, or has been stopped.
 
-### Event handlers
-
-- {{domxref("RemotePlayback.onconnecting")}}
-  - : Fired when the user agent initiates remote playback.
-- {{domxref("RemotePlayback.onconnect")}}
-  - : Fired when the user agent successfully connects to the remote device.
-- {{domxref("RemotePlayback.ondisconnect")}}
-  - : Fired when the user agent disconnects from the remote device.
-
 ## Methods
 
 - {{domxref("RemotePlayback.watchAvailability()")}}
@@ -42,6 +36,15 @@ The **`RemotePlayback`** interface of the {{domxref('Remote Playback API','','',
   - : Cancels the request to monitor the availability of remote playback devices.
 - {{domxref("RemotePlayback.prompt()")}}
   - : Prompts the user to select and give permission to connect to a remote playback device.
+
+## Events
+
+- {{domxref("RemotePlayback.connecting_event", "connecting")}}
+  - : Fired when the user agent initiates remote playback.
+- {{domxref("RemotePlayback.connect_event", "connect")}}
+  - : Fired when the user agent successfully connects to the remote device.
+- {{domxref("RemotePlayback.disconnect_event", "disconnect")}}
+  - : Fired when the user agent disconnects from the remote device.
 
 ## Examples
 

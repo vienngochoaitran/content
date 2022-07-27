@@ -48,9 +48,9 @@ If we dropped this list into a document as-is, there would be no apparent indent
 
 To avoid this and get some indentation, there are only three options available to browser implementors.
 
-1.  Give each `<li>` element a left margin.
-2.  Give the `<ul>` element a left margin.
-3.  Give the `<ul>` element some left padding.
+1. Give each `<li>` element a left margin.
+2. Give the `<ul>` element a left margin.
+3. Give the `<ul>` element some left padding.
 
 As it turns out, nobody seems to have used the first option. The second option was taken by Internet Explorer, and Opera. The third was adopted by Firefox.
 
@@ -78,7 +78,7 @@ If you're more interested in following the Internet Explorer/Opera model, then:
 ul {margin-left: 40px; padding-left: 0;}
 ```
 
-Of course, you can fill in your preferred values. Set both to `1.25em`, if you like -- there's no reason why you have to stick with pixel-based indentation. If you want to reset lists to have no indentation, then you still have to zero out both padding and margin:
+Of course, you can fill in your preferred values. Set both to `1.25em`, if you like — there's no reason why you have to stick with pixel-based indentation. If you want to reset lists to have no indentation, then you still have to zero out both padding and margin:
 
 ```css
 ul {margin-left: 0; padding-left: 0;}

@@ -60,7 +60,7 @@ let re = /[0-9]+/g;
 let str = '2016-01-02';
 let result = re[Symbol.matchAll](str);
 
-console.log(Array.from(result, x => x[0]));
+console.log(Array.from(result, (x) => x[0]));
 // ["2016", "01", "02"]
 ```
 
@@ -100,6 +100,6 @@ console.log(result[1]); // [ "2019-03-07", "2019", "03", "07" ]
 
 ## See also
 
-- A polyfill of `RegExp.prototype[@@matchAll]` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
+- [Polyfill of `RegExp.prototype[@@matchAll]` in `core-js`](https://github.com/zloirock/core-js#ecmascript-string-and-regexp)
 - {{JSxRef("String.prototype.matchAll()")}}
 - {{JSxRef("Symbol.matchAll")}}

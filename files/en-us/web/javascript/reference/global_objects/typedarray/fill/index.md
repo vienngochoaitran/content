@@ -15,8 +15,8 @@ browser-compat: javascript.builtins.TypedArray.fill
 
 The **`fill()`** method fills all the elements of a typed array
 from a start index to an end index with a static value. This method has the same
-algorithm as {{jsxref("Array.prototype.fill()")}}. _TypedArray_ is one of the [typed
-array types](/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#TypedArray_objects) here.
+algorithm as {{jsxref("Array.prototype.fill()")}}. _TypedArray_ is one of the
+[typed array types](/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#typedarray_objects) here.
 
 {{EmbedInteractiveExample("pages/js/typedarray-fill.html","shorter")}}
 
@@ -67,19 +67,6 @@ new Uint8Array([1, 2, 3]).fill(4, 1, 1);   // Uint8Array [1, 2, 3]
 new Uint8Array([1, 2, 3]).fill(4, -3, -2); // Uint8Array [4, 2, 3]
 ```
 
-## Polyfill
-
-Since there is no global object with the name _TypedArray_, polyfilling must be
-done on an "as needed" basis. Use the following "polyfill" along with the
-{{jsxref("Array.prototype.fill()")}} polyfill.
-
-```js
-// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.fill
-if (!Uint8Array.prototype.fill) {
-  Uint8Array.prototype.fill = Array.prototype.fill;
-}
-```
-
 ## Specifications
 
 {{Specifications}}
@@ -90,5 +77,5 @@ if (!Uint8Array.prototype.fill) {
 
 ## See also
 
-- A polyfill of `TypedArray.prototype.fill` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-typed-arrays)
+- [Polyfill of `TypedArray.prototype.fill` in `core-js`](https://github.com/zloirock/core-js#ecmascript-typed-arrays)
 - {{jsxref("Array.prototype.fill()")}}

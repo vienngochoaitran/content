@@ -1,6 +1,7 @@
 ---
 title: RelativeOrientationSensor
 slug: Web/API/RelativeOrientationSensor
+page-type: web-api-interface
 tags:
   - API
   - Generic Sensor API
@@ -22,6 +23,8 @@ To use this sensor, the user must grant permission to the `'accelerometer'`, and
 
 If a feature policy blocks use of a feature it is because your code is inconsistent with the policies set on your server. This is not something that would ever be shown to a user. The {{httpheader('Feature-Policy')}} HTTP header article contains implementation instructions.
 
+{{InheritanceDiagram}}
+
 ## Constructor
 
 - {{domxref("RelativeOrientationSensor.RelativeOrientationSensor", "RelativeOrientationSensor()")}}
@@ -31,13 +34,13 @@ If a feature policy blocks use of a feature it is because your code is inconsist
 
 _No specific properties; inherits methods from its ancestors {{domxref('OrientationSensor')}} and {{domxref('Sensor')}}._
 
-### Event handlers
-
-_No specific event handlers; inherits methods from its ancestor, {{domxref('Sensor')}}._
-
 ## Methods
 
 _No specific methods; inherits methods from its ancestors {{domxref('OrientationSensor')}} and {{domxref('Sensor')}}._
+
+## Events
+
+_No specific events; inherits events from its ancestor, {{domxref('Sensor')}}._
 
 ## Examples
 
@@ -55,8 +58,8 @@ sensor.addEventListener('reading', () => {
   // model is a Three.js object instantiated elsewhere.
   model.quaternion.fromArray(sensor.quaternion).inverse();
 });
-sensor.addEventListener('error', error => {
-  if (event.error.name == 'NotReadableError') {
+sensor.addEventListener('error', (error) => {
+  if (event.error.name === 'NotReadableError') {
     console.log("Sensor is not available.");
   }
 });
@@ -71,10 +74,10 @@ Using orientation sensors requires requesting permissions for multiple device se
 const sensor = new RelativeOrientationSensor();
 Promise.all([navigator.permissions.query({ name: "accelerometer" }),
              navigator.permissions.query({ name: "gyroscope" })])
-       .then(results => {
-         if (results.every(result => result.state === "granted")) {
+       .then((results) => {
+         if (results.every((result) => result.state === "granted")) {
            sensor.start();
-           ...
+           // ...
          } else {
            console.log("No permissions to use RelativeOrientationSensor.");
          }

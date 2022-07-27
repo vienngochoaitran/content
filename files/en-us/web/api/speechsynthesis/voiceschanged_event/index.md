@@ -1,6 +1,7 @@
 ---
 title: 'SpeechSynthesis: voiceschanged event'
 slug: Web/API/SpeechSynthesis/voiceschanged_event
+page-type: web-api-event
 tags:
   - Event
   - Reference
@@ -11,45 +12,32 @@ browser-compat: api.SpeechSynthesis.voiceschanged_event
 
 The **`voiceschanged`** event of the [Web Speech API](/en-US/docs/Web/API/Web_Speech_API) is fired when the list of {{domxref("SpeechSynthesisVoice")}} objects that would be returned by the {{domxref("SpeechSynthesis.getVoices()")}} method has changed (when the `voiceschanged` event fires.)
 
-<table class="properties">
-  <tbody>
-    <tr>
-      <th scope="row">Bubbles</th>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th scope="row">Cancelable</th>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th scope="row">Interface</th>
-      <td>{{domxref("Event")}}</td>
-    </tr>
-    <tr>
-      <th scope="row">Event handler property</th>
-      <td>
-        <code
-          ><a href="/en-US/docs/Web/API/SpeechSynthesis/onvoiceschanged"
-            >onvoiceschanged</a
-          ></code
-        >
-      </td>
-    </tr>
-  </tbody>
-</table>
+## Syntax
+
+Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+
+```js
+addEventListener('voiceschanged', (event) => { })
+
+onvoiceschanged = (event) => { }
+```
+
+## Event type
+
+A generic {{DOMxRef("Event")}} with no added properties.
 
 ## Examples
 
 This could be used to repopulate a list of voices that the user can choose between when the event fires. You can use the `voiceschanged` event in an [`addEventListener`](/en-US/docs/Web/API/EventTarget/addEventListener) method:
 
 ```js
-var synth = window.speechSynthesis;
+const synth = window.speechSynthesis;
 
 synth.addEventListener('voiceschanged', function() {
-  var voices = synth.getVoices();
-  for(i = 0; i < voices.length ; i++) {
-    var option = document.createElement('option');
-    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+  const voices = synth.getVoices();
+  for(let i = 0; i < voices.length ; i++) {
+    const option = document.createElement('option');
+    option.textContent = `${voices[i].name} (${voices[i].lang})`;
     option.setAttribute('data-lang', voices[i].lang);
     option.setAttribute('data-name', voices[i].name);
     voiceSelect.appendChild(option);
@@ -57,15 +45,15 @@ synth.addEventListener('voiceschanged', function() {
 });
 ```
 
-Or use the [`onvoiceschanged`](/en-US/docs/Web/API/SpeechSynthesis/onvoiceschanged) event handler property:
+Or use the `onvoiceschanged` event handler property:
 
 ```js
-var synth = window.speechSynthesis;
+const synth = window.speechSynthesis;
 synth.onvoiceschanged = function() {
-  var voices = synth.getVoices();
-  for(i = 0; i < voices.length ; i++) {
-    var option = document.createElement('option');
-    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+  const voices = synth.getVoices();
+  for(let i = 0; i < voices.length ; i++) {
+    const option = document.createElement('option');
+    option.textContent = `${voices[i].name} (${voices[i].lang})`;
     option.setAttribute('data-lang', voices[i].lang);
     option.setAttribute('data-name', voices[i].name);
     voiceSelect.appendChild(option);

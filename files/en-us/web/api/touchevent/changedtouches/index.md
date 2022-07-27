@@ -1,6 +1,7 @@
 ---
 title: TouchEvent.changedTouches
 slug: Web/API/TouchEvent/changedTouches
+page-type: web-api-instance-property
 tags:
   - API
   - DOM
@@ -21,18 +22,11 @@ The **`changedTouches`** read-only property is a {{ domxref("TouchList") }} whos
 - For the {{event("touchmove")}} event, it is a list of the touch points that have changed since the last event.
 - For the {{event("touchend")}} event, it is a list of the touch points that have been removed from the surface (that is, the set of touch points corresponding to fingers no longer touching the surface).
 
-## Syntax
+## Value
 
-```js
-var changes = touchEvent.changedTouches;
-```
+A {{ domxref("TouchList") }} whose {{ domxref("Touch") }} objects include all the touch points that contributed to this touch event.
 
-### Return value
-
-- `changes`
-  - : A {{ domxref("TouchList") }} whose {{ domxref("Touch") }} objects include all the touch points that contributed to this touch event.
-
-## Example
+## Examples
 
 This example illustrates the {{domxref("TouchEvent")}} object's {{domxref("TouchEvent.changedTouches")}} property. The {{domxref("TouchEvent.changedTouches")}} property is a {{domxref("TouchList")}} object that contains one {{domxref("Touch")}} object for each touch point which contributed to the event.
 
@@ -43,7 +37,7 @@ someElement.addEventListener('touchmove', function(e) {
    // Iterate through the list of touch points that changed
    // since the last event and print each touch point's identifier.
    for (var i=0; i < e.changedTouches.length; i++) {
-     console.log("changedTouches[" + i + "].identifier = " + e.changedTouches[i].identifier);
+     console.log(`changedTouches[${i}].identifier = ${e.changedTouches[i].identifier}`);
    }
 }, false);
 ```

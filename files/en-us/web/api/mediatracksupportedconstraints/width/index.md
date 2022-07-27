@@ -1,9 +1,10 @@
 ---
 title: MediaTrackSupportedConstraints.width
 slug: Web/API/MediaTrackSupportedConstraints/width
+page-type: web-api-instance-property
 browser-compat: api.MediaTrackSupportedConstraints.width
 ---
-{{APIRef("Media Capture and Streams")}}
+{{DefaultAPISidebar("Media Capture and Streams")}}
 
 The {{domxref("MediaTrackSupportedConstraints")}} dictionary's
 **`width`** property is a read-only Boolean value which is

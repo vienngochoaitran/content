@@ -1,6 +1,7 @@
 ---
 title: VideoFrame.format
 slug: Web/API/VideoFrame/format
+page-type: web-api-instance-property
 tags:
   - API
   - Property
@@ -13,9 +14,9 @@ browser-compat: api.VideoFrame.format
 
 The **`format`** property of the {{domxref("VideoFrame")}} interface returns the pixel format of the `VideoFrame`.
 
-### Value
+## Value
 
-A {{domxref("DOMString","string")}} containing a video pixel format, one of:
+A string containing a video pixel format, one of:
 
 - `"I420"`
   - : Also known as *Planar YUV 4:2:0*, this format is composed of three distinct planes, one plane of luma and two planes of chroma, denoted Y, U and V, and present in this order. The U an V planes are sub-sampled horizontally and vertically by a factor of 2 compared to the Y plane. Each sample in this format is 8 bits.
@@ -26,7 +27,7 @@ A {{domxref("DOMString","string")}} containing a video pixel format, one of:
 - `"I444"`
   - : Also known as *Planar YUV 4:4:4*, this format is composed of three distinct planes, one plane of Luma and two planes of Chroma, denoted Y, U and V, and present in this order. Each sample in this format is 8 bits. This format does not use sub-sampling.
 - `"NV12"`
-  - : This format is composed of two distinct planes, one plane of Luma and then another plane for the two Chroma components. The two planes are present in this order, and are refered to as respectively the Y plane and the UV plane. The U an V components are sub-sampled horizontally and vertically by a factor of 2 compared to the components in the Y planes. Each sample in this format is 8 bits.
+  - : This format is composed of two distinct planes, one plane of Luma and then another plane for the two Chroma components. The two planes are present in this order, and are referred to as respectively the Y plane and the UV plane. The U an V components are sub-sampled horizontally and vertically by a factor of 2 compared to the components in the Y planes. Each sample in this format is 8 bits.
 - `"RGBA"`
   - : This format is composed of a single plane, that encodes four components: red, green, blue, and an alpha value, present in this order. Each sample in this format is 8 bits, and each pixel is therefore 32 bits.
 - `"RGBX"`

@@ -59,25 +59,6 @@ Math.cosh(1);  // 1.5430806348152437
 Math.cosh(-1); // 1.5430806348152437
 ```
 
-## Polyfill
-
-This can be emulated with the help of the {{jsxref("Math.exp()")}} function:
-
-```js
-Math.cosh = Math.cosh || function(x) {
-  return (Math.exp(x) + Math.exp(-x)) / 2;
-}
-```
-
-or using only one call to the {{jsxref("Math.exp()")}} function:
-
-```js
-Math.cosh = Math.cosh || function(x) {
-  var y = Math.exp(x);
-  return (y + 1 / y) / 2;
-};
-```
-
 ## Specifications
 
 {{Specifications}}
@@ -88,7 +69,7 @@ Math.cosh = Math.cosh || function(x) {
 
 ## See also
 
-- A polyfill of `Math.cosh` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-math)
+- [Polyfill of `Math.cosh` in `core-js`](https://github.com/zloirock/core-js#ecmascript-math)
 - {{jsxref("Math.acosh()")}}
 - {{jsxref("Math.asinh()")}}
 - {{jsxref("Math.atanh()")}}

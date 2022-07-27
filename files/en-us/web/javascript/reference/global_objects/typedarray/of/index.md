@@ -12,8 +12,8 @@ browser-compat: javascript.builtins.TypedArray.of
 ---
 {{JSRef}}
 
-The **`TypedArray.of()`** method creates a new [typed
-array](/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#TypedArray_objects) from a variable number of arguments. This method is nearly the same as
+The **`TypedArray.of()`** method creates a new
+[typed array](/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#typedarray_objects) from a variable number of arguments. This method is nearly the same as
 {{jsxref("Array.of()")}}.
 
 {{EmbedInteractiveExample("pages/js/typedarray-of.html","shorter")}}
@@ -58,8 +58,8 @@ Some subtle distinctions between {{jsxref("Array.of()")}} and
   not a constructor, `TypedArray.of()` will throw a
   {{jsxref("TypeError")}}, where `Array.of()` defaults to creating a new
   {{jsxref("Array")}}.
-- `TypedArray.of()` uses `[[Put]]` where
-  `Array.of()` uses `[[DefineProperty]]`. Hence, when working with
+- `TypedArray.of()` uses `[[Set]]` where
+  `Array.of()` uses `[[DefineOwnProperty]]`. Hence, when working with
   {{jsxref("Proxy")}} objects, it calls {{jsxref("Global_Objects/Proxy/handler/set",
     "handler.set")}} to create new elements rather than
   {{jsxref("Global_Objects/Proxy/handler/defineProperty", "handler.defineProperty()")}}.
@@ -85,6 +85,6 @@ Int16Array.of(undefined);    // Int16Array [ 0 ]
 
 ## See also
 
-- A polyfill of `TypedArray.of` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-typed-arrays)
+- [Polyfill of `TypedArray.of` in `core-js`](https://github.com/zloirock/core-js#ecmascript-typed-arrays)
 - {{jsxref("TypedArray.from()")}}
 - {{jsxref("Array.of()")}}

@@ -11,7 +11,7 @@ browser-compat: css.types.transform-function
 ---
 {{CSSRef}}
 
-The **`<translation-value>`** [CSS](/en-US/docs/Web/CSS) [data type](/en-US/docs/Web/CSS/CSS_Types) is used in the arguments for certain {{cssxref("transform")}} functions, including [`translate()`](/en-US/docs/Web/CSS/transform-function/translate()), [`translateX()`](/en-US/docs/Web/CSS/transform-function/translateX()), [`translateY()`](/en-US/docs/Web/CSS/transform-function/translateY()), and [`translate3d()`](/en-US/docs/Web/CSS/transform-function/translate3d()).
+The **`<translation-value>`** [CSS](/en-US/docs/Web/CSS) [data type](/en-US/docs/Web/CSS/CSS_Types) is used in the arguments for certain {{cssxref("transform")}} functions, including [`translate()`](/en-US/docs/Web/CSS/transform-function/translate), [`translateX()`](/en-US/docs/Web/CSS/transform-function/translateX), [`translateY()`](/en-US/docs/Web/CSS/transform-function/translateY), and [`translate3d()`](/en-US/docs/Web/CSS/transform-function/translate3d).
 
 ## Syntax
 
@@ -39,8 +39,8 @@ Choose one, and the transform is applied to the cube; after 2 seconds, the cube 
   </section>
 
   <div class="select-form">
-    <label>Select a transform function</label>
-    <select>
+    <label for="transfunction">Select a transform function</label>
+    <select id="transfunction">
       <option selected>Choose a function</option>
       <option>translate(100px, 100px)</option>
       <option>translateX(100px)</option>

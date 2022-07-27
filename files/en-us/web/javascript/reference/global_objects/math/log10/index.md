@@ -83,16 +83,6 @@ Math.log10(-2);     // NaN
 Math.log10(100000); // 5
 ```
 
-## Polyfill
-
-This can be emulated with the following function:
-
-```js
-Math.log10 = Math.log10 || function(x) {
-  return Math.log(x) * Math.LOG10E;
-};
-```
-
 ## Specifications
 
 {{Specifications}}
@@ -103,7 +93,7 @@ Math.log10 = Math.log10 || function(x) {
 
 ## See also
 
-- A polyfill of `Math.log10` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-math)
+- [Polyfill of `Math.log10` in `core-js`](https://github.com/zloirock/core-js#ecmascript-math)
 - {{jsxref("Math.exp()")}}
 - {{jsxref("Math.log()")}}
 - {{jsxref("Math.log1p()")}}

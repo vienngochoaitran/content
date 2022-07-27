@@ -1,6 +1,7 @@
 ---
 title: Document.lastModified
 slug: Web/API/Document/lastModified
+page-type: web-api-instance-property
 tags:
   - API
   - Document
@@ -16,11 +17,9 @@ The **`lastModified`** property of the {{domxref("Document")}}
 interface returns a string containing the date and time on which the current document
 was last modified.
 
-## Syntax
+## Value
 
-```js
-var string = document.lastModified;
-```
+A string.
 
 ## Examples
 
@@ -58,7 +57,7 @@ an alert message when the page changes (see also: [JavaScript cookies API](/en-U
 
 ```js
 if (Date.parse(document.lastModified) > parseFloat(document.cookie.replace(/(?:(?:^|.*;)\s*last_modif\s*\=\s*([^;]*).*$)|^.*$/, "$1") || "0")) {
-  document.cookie = "last_modif=" + Date.now() + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=" + location.pathname;
+  document.cookie = `last_modif=${Date.now()}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=${location.pathname}`;
   alert("This page has changed!");
 }
 ```
@@ -71,7 +70,7 @@ var
   nLastModif = Date.parse(document.lastModified);
 
 if (isNaN(nLastVisit) || nLastModif > nLastVisit) {
-  document.cookie = "last_modif=" + Date.now() + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=" + location.pathname;
+  document.cookie = `last_modif=${Date.now()}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=${location.pathname}`;
 
   if (isFinite(nLastVisit)) {
     alert("This page has been changed!");
@@ -80,12 +79,10 @@ if (isNaN(nLastVisit) || nLastModif > nLastVisit) {
 ```
 
 > **Note:** WebKit returns the time string in UTC; Gecko and
-> Internet Explorer return a time in the local timezone. (See: [Bug 4363 – document.lastModified
-> returns date in UTC time, but should return it in local time](https://bugs.webkit.org/show_bug.cgi?id=4363))
+> Internet Explorer return a time in the local timezone. (See: [Bug 4363 – document.lastModified returns date in UTC time, but should return it in local time](https://bugs.webkit.org/show_bug.cgi?id=4363))
 
 If you want to know **whether _an external page_ has changed**,
-please read [this
-paragraph about the `XMLHttpRequest()` API](/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#get_last_modified_date).
+please read [this paragraph about the `XMLHttpRequest()` API](/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#get_last_modified_date).
 
 ## Specifications
 

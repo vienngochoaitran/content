@@ -12,41 +12,41 @@ The **`systemLanguage`** attribute represents a list of supported language tags.
 
 You can use this attribute with the following SVG elements:
 
-*   {{SVGElement("a")}}
-*   {{SVGElement("altGlyph")}}
-*   {{SVGElement("animate")}}
-*   {{SVGElement("animateColor")}}
-*   {{SVGElement("animateMotion")}}
-*   {{SVGElement("animateTransform")}}
-*   {{SVGElement("audio")}}
-*   {{SVGElement("canvas")}}
-*   {{SVGElement("circle")}}
-*   {{SVGElement("clipPath")}}
-*   {{SVGElement("cursor")}}
-*   {{SVGElement("defs")}}
-*   {{SVGElement("discard")}}
-*   {{SVGElement("ellipse")}}
-*   {{SVGElement("foreignObject")}}
-*   {{SVGElement("g")}}
-*   {{SVGElement("iframe")}}
-*   {{SVGElement("image")}}
-*   {{SVGElement("line")}}
-*   {{SVGElement("mask")}}
-*   {{SVGElement("path")}}
-*   {{SVGElement("pattern")}}
-*   {{SVGElement("polygon")}}
-*   {{SVGElement("polyline")}}
-*   {{SVGElement("rect")}}
-*   {{SVGElement("set")}}
-*   {{SVGElement("svg")}}
-*   {{SVGElement("switch")}}
-*   {{SVGElement("text")}}
-*   {{SVGElement("textPath")}}
-*   {{SVGElement("tref")}}
-*   {{SVGElement("tspan")}}
-*   {{SVGElement("unknown")}}
-*   {{SVGElement("use")}}
-*   {{SVGElement("video")}}
+- {{SVGElement("a")}}
+- {{SVGElement("altGlyph")}}
+- {{SVGElement("animate")}}
+- {{SVGElement("animateColor")}}
+- {{SVGElement("animateMotion")}}
+- {{SVGElement("animateTransform")}}
+- {{SVGElement("audio")}}
+- {{SVGElement("canvas")}}
+- {{SVGElement("circle")}}
+- {{SVGElement("clipPath")}}
+- {{SVGElement("cursor")}}
+- {{SVGElement("defs")}}
+- {{SVGElement("discard")}}
+- {{SVGElement("ellipse")}}
+- {{SVGElement("foreignObject")}}
+- {{SVGElement("g")}}
+- {{SVGElement("iframe")}}
+- {{SVGElement("image")}}
+- {{SVGElement("line")}}
+- {{SVGElement("mask")}}
+- {{SVGElement("path")}}
+- {{SVGElement("pattern")}}
+- {{SVGElement("polygon")}}
+- {{SVGElement("polyline")}}
+- {{SVGElement("rect")}}
+- {{SVGElement("set")}}
+- {{SVGElement("svg")}}
+- {{SVGElement("switch")}}
+- {{SVGElement("text")}}
+- {{SVGElement("textPath")}}
+- {{SVGElement("tref")}}
+- {{SVGElement("tspan")}}
+- {{SVGElement("unknown")}}
+- {{SVGElement("use")}}
+- {{SVGElement("video")}}
 
 ## Usage notes
 
@@ -67,8 +67,8 @@ You can use this attribute with the following SVG elements:
   </tbody>
 </table>
 
-*   `<language-tags>`
-    *   : The value is a set of comma-separated tokens, each of which must be a language tag, as defined in {{RFC(5646, "Tags for Identifying Languages (also known as BCP 47)")}}.
+- `<language-tags>`
+  - : The value is a set of comma-separated tokens, each of which must be a language tag, as defined in {{RFC(5646, "Tags for Identifying Languages (also known as BCP 47)")}}.
 
 `systemLanguage` is often used in conjunction with the {{SVGElement("switch")}} element. If the attribute is used in other situations, then it represents a simple switch on the given element whether to render the element or not.
 
@@ -92,31 +92,7 @@ However, just because multiple languages are present within the object on which 
 
 ## Specifications
 
-<table class="no-markdown">
-  <thead>
-    <tr>
-      <th scope="col">Specification</th>
-      <th scope="col">Status</th>
-      <th scope="col">Comment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        {{SpecName("SVG2", "struct.html#SystemLanguageAttribute", "systemLanguage")}}
-      </td>
-      <td>{{Spec2("SVG2")}}</td>
-      <td>No change</td>
-    </tr>
-    <tr>
-      <td>
-        {{SpecName("SVG1.1", "struct.html#SystemLanguageAttribute", "systemLanguage")}}
-      </td>
-      <td>{{Spec2("SVG1.1")}}</td>
-      <td>Initial definition</td>
-    </tr>
-  </tbody>
-</table>
+{{Specifications}}
 
 ## Browser compatibility
 

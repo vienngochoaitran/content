@@ -1,6 +1,7 @@
 ---
 title: Bluetooth.getAvailability()
 slug: Web/API/Bluetooth/getAvailability
+page-type: web-api-instance-method
 tags:
   - API
   - Bluetooth
@@ -41,11 +42,11 @@ The following snippet prints out a message in the console specifying whether or 
 Bluetooth is supported:
 
 ```js
-navigator.bluetooth.getAvailability().then(available => {
-  if (available)
-      console.log("This device supports Bluetooth!");
-  else
-      console.log("Doh! Bluetooth is not supported");
+navigator.bluetooth.getAvailability().then((available) => {
+  if (available)
+      console.log("This device supports Bluetooth!");
+  else
+      console.log("Doh! Bluetooth is not supported");
 });
 ```
 

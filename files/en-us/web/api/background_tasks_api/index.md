@@ -1,6 +1,7 @@
 ---
 title: Background Tasks API
 slug: Web/API/Background_Tasks_API
+page-type: web-api-overview
 tags:
   - API
   - Background Tasks API
@@ -9,6 +10,7 @@ tags:
   - Overview
   - cancelIdleCallback
   - requestIdleCallback
+browser-compat: api.Window.requestIdleCallback
 ---
 {{DefaultAPISidebar("Background Tasks")}}
 
@@ -43,7 +45,7 @@ window.requestIdleCallback = window.requestIdleCallback || function(handler) {
   return setTimeout(function() {
     handler({
       didTimeout: false,
-      timeRemaining: function() {
+      timeRemaining() {
         return Math.max(0, 50.0 - (Date.now() - startTime));
       }
     });
@@ -95,7 +97,7 @@ In order to be oriented about what we're trying to accomplish, let's have a look
 </p>
 
 <div id="container">
-  <div class="label">Decoding quantum filament tachyon emissions...</div>
+  <div class="label">Decoding quantum filament tachyon emissions…</div>
 
   <progress id="progress" value="0"></progress>
 
@@ -240,7 +242,7 @@ window.requestIdleCallback = window.requestIdleCallback || function(handler) {
   return setTimeout(function() {
     handler({
       didTimeout: false,
-      timeRemaining: function() {
+      timeRemaining() {
         return Math.max(0, 50.0 - (Date.now() - startTime));
       }
     });
@@ -312,10 +314,10 @@ function runTaskQueue(deadline) {
 
 For each task in the queue that we have time to execute, we do the following:
 
-1.  We [remove the task object from the queue](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift).
-2.  We increment `currentTaskNumber` to track how many tasks we've executed.
-3.  We call the task's handler, `task.handler`, passing into it the task's data object (`task.data`).
-4.  We call a function, `scheduleStatusRefresh()`, to handle scheduling a screen update to reflect changes to our progress.
+1. We [remove the task object from the queue](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift).
+2. We increment `currentTaskNumber` to track how many tasks we've executed.
+3. We call the task's handler, `task.handler`, passing into it the task's data object (`task.data`).
+4. We call a function, `scheduleStatusRefresh()`, to handle scheduling a screen update to reflect changes to our progress.
 
 When time runs out, if there are still tasks left in the list, we call {{domxref("Window.requestIdleCallback", "requestIdleCallback()")}} again so that we can continue to process the tasks the next time there's idle time available. If the queue is empty, we set taskHandle to 0 to indicate that we don't have a callback scheduled. That way, we'll know to request a callback next time `enqueueTask()` is called.
 
@@ -375,8 +377,8 @@ First, `scrolledToEnd` is set to `true` if the text in the log is scrolled to th
 
 Next, we update the progress and status information if any tasks have been enqueued.
 
-1.  If the current maximum value of the progress bar is different from the current total number of enqueued tasks (`totalTaskCount`), then we update the contents of the displayed total number of tasks (`totalTaskCountElem`) and the maximum value of the progress bar, so that it scales properly.
-2.  We do the same thing with the number of tasks processed so far; if `progressBarElem.value` is different from the task number currently being processed (`currentTaskNumber`), then we update the displayed value of the currently-being-processed task and the current value of the progress bar.
+1. If the current maximum value of the progress bar is different from the current total number of enqueued tasks (`totalTaskCount`), then we update the contents of the displayed total number of tasks (`totalTaskCountElem`) and the maximum value of the progress bar, so that it scales properly.
+2. We do the same thing with the number of tasks processed so far; if `progressBarElem.value` is different from the task number currently being processed (`currentTaskNumber`), then we update the displayed value of the currently-being-processed task and the current value of the progress bar.
 
 Then, if there's text waiting to be added to the log (that is, if `logFragment` isn't `null`), we append it to the log element using {{domxref("Node.appendChild", "Element.appendChild()")}} and set `logFragment` to `null` so we don't add it again.
 
@@ -412,10 +414,10 @@ The function we'll be using as our task handler—that is, the function that wil
 
 ```js
 function logTaskHandler(data) {
-  log("<strong>Running task #" + currentTaskNumber + "</strong>");
+  log(`Running task #${currentTaskNumber}`);
 
   for (i=0; i<data.count; i+=1) {
-    log((i+1).toString() + ". " + data.text);
+    log(`${(i+1).toString()}. ${data.text}`);
   }
 }
 ```
@@ -443,7 +445,7 @@ function decodeTechnoStuff() {
   for (i=0; i<n; i++) {
     let taskData = {
       count: getRandomIntInclusive(75, 150),
-      text: "This text is from task number " + (i+1).toString() + " of " + n
+      text: `This text is from task number ${(i+1).toString()} of ${n}`
     };
 
     enqueueTask(logTaskHandler, taskData);
@@ -472,11 +474,11 @@ Below is the actual functioning result of the code above. Try it out, play with 
 
 ## Specifications
 
-{{Specifications("api.Window.requestIdleCallback")}}
+{{Specifications}}
 
 ## Browser compatibility
 
-{{Compat("api.IdleDeadline")}}
+{{Compat}}
 
 ## See also
 

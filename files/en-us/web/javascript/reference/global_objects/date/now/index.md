@@ -33,7 +33,7 @@ A {{jsxref("Number")}} representing the milliseconds elapsed since the UNIX epoc
 
 To offer protection against timing attacks and fingerprinting, the precision of
 `Date.now()` might get rounded depending on browser settings.
-In Firefox, the `privacy.reduceTimerPrecision`  preference is enabled by
+In Firefox, the `privacy.reduceTimerPrecision`  preference is enabled by
 default and defaults to 20µs in Firefox 59; in 60 it will be 2ms.
 
 ```js
@@ -42,14 +42,14 @@ Date.now()
 // 1519211809934
 // 1519211810362
 // 1519211811670
-// ...
+// …
 
 // reduced time precision with `privacy.resistFingerprinting` enabled
 Date.now();
 // 1519129853500
 // 1519129858900
 // 1519129864400
-// ...
+// …
 ```
 
 In Firefox, you can also enable `privacy.resistFingerprinting`, the
@@ -67,7 +67,7 @@ is larger.
 
 ## See also
 
-- A polyfill of `Date.now` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-date)
+- [Polyfill of `Date.now` in `core-js`](https://github.com/zloirock/core-js#ecmascript-date)
 - {{domxref("Performance.now()")}} — provides timestamps with sub-millisecond
   resolution for use in measuring web page performance
 - {{domxref("console.time()")}} / {{domxref("console.timeEnd()")}}

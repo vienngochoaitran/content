@@ -15,9 +15,11 @@ browser-compat: webextensions.api.webRequest.StreamFilter.ondata
 ---
 {{AddonSidebar()}}
 
-An event handler that will be called repeatedly when response data is available. The handler is passed an `event` object which contains a `data` property, which contains a chunk of the response data as an {{jsxref("ArrayBuffer")}}.
+An event handler that is called repeatedly when response data is available. The handler is passed an `event` object containing a `data` property, which includes a chunk of the response data as an {{jsxref("ArrayBuffer")}}.
 
-To decode the data use either {{domxref("TextDecoder")}} or {{domxref("Blob")}}.
+To decode the data, use either {{domxref("TextDecoder")}} or {{domxref("Blob")}}.
+
+Without an `ondata` listener, you don't receive the original response body, and the output stream is empty unless {{WebEXTAPIRef("webRequest.StreamFilter.write", "write")}} is called.
 
 ## WebExtension Examples
 
@@ -31,7 +33,7 @@ function listener(details) {
   let decoder = new TextDecoder("utf-8");
   let encoder = new TextEncoder();
 
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     let str = decoder.decode(event.data, {stream: true});
     // Just change any instance of WebExtension Example in the HTTP response
     // to WebExtension WebExtension Example.
@@ -43,7 +45,7 @@ function listener(details) {
     // the chunk boundary!
   }
 
-  filter.onstop = event => {
+  filter.onstop = (event) => {
     filter.close();
   }
 
@@ -66,11 +68,11 @@ function listener(details) {
   let encoder = new TextEncoder();
 
   let data = [];
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     data.push(event.data);
   };
 
-  filter.onstop = event => {
+  filter.onstop = (event) => {
     let str = "";
     if (data.length == 1) {
       str = decoder.decode(data[0]);
@@ -105,11 +107,11 @@ function listener(details) {
   let encoder = new TextEncoder();
 
   let data = [];
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     data.push(event.data);
   };
 
-  filter.onstop = event => {
+  filter.onstop = (event) => {
     let str = "";
     for (let buffer of data) {
       str += decoder.decode(buffer, {stream: true});
@@ -140,11 +142,11 @@ function listener(details) {
   let encoder = new TextEncoder();
 
   let data = [];
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     data.push(decoder.decode(event.data, {stream: true}));
   };
 
-  filter.onstop = event => {
+  filter.onstop = (event) => {
     data.push(decoder.decode());
 
     let str = data.join("");
@@ -171,11 +173,11 @@ function listener(details) {
   let encoder = new TextEncoder();
 
   let data = [];
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     data.push(event.data);
   };
 
-  filter.onstop = async event => {
+  filter.onstop = async (event) => {
     let blob = new Blob(data, {type: 'text/html'});
     let str = await blob.text();
 
@@ -203,11 +205,11 @@ function listener(details) {
   let parser = new DOMParser();
 
   let data = [];
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     data.push(event.data);
   };
 
-  filter.onstop = async event => {
+  filter.onstop = async (event) => {
     let blob = new Blob(data, {type: 'text/html'});
     let str = await blob.text();
     let doc = parser.parseFromString(str, blob.type);
@@ -236,11 +238,11 @@ function listener(details) {
   let encoder = new TextEncoder();
 
   let data = [];
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     data.push(new Uint8Array(event.data));
   };
 
-  filter.onstop = event => {
+  filter.onstop = (event) => {
     let combinedLength = 0;
     for (let buffer of data) {
       combinedLength += buffer.length;
@@ -276,11 +278,11 @@ function listener(details) {
   let encoder = new TextEncoder();
 
   let data = [];
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     data.push(event.data);
   };
 
-  filter.onstop = async event => {
+  filter.onstop = async (event) => {
     let blob = new Blob(data, {type: 'text/html'});
     let buffer = await blob.arrayBuffer();
     let str = decoder.decode(buffer);
@@ -306,7 +308,7 @@ function listener(details) {
   let decoder = new TextDecoder("utf-8");
 
   let str = "";
-  filter.ondata = event => {
+  filter.ondata = (event) => {
     let stream = true;
     let data = new Uint8Array(event.data.slice(-8, -1));
     if (String.fromCharCode(...data) == "</html>") {
@@ -315,7 +317,7 @@ function listener(details) {
     str += decoder.decode(event.data, {stream});
   };
 
-  filter.onstop = event => {
+  filter.onstop = (event) => {
     // Just change any instance of WebExtension Example in the HTTP response
     // to WebExtension WebExtension Example.
     str = str.replace(/WebExtension Example/g, 'WebExtension $&');

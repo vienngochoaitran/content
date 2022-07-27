@@ -56,7 +56,7 @@ const foo = {
 };
 
 foo.bar.baz = foo; // Circular reference!
-execRecursively(obj => console.log(obj), foo);
+execRecursively((obj) => console.log(obj), foo);
 ```
 
 Here, a `WeakSet` is created on the first run, and passed along with every subsequent function call (using the internal `_refs` parameter).
@@ -109,7 +109,7 @@ Note that `foo !== bar`. While they are similar objects, _they are not **the sam
 
 ## See also
 
-- A polyfill of `WeakSet` is available in [`core-js`](https://github.com/zloirock/core-js#weakset)
+- [Polyfill of `WeakSet` in `core-js`](https://github.com/zloirock/core-js#weakset)
 - {{jsxref("Map")}}
 - {{jsxref("Set")}}
 - {{jsxref("WeakMap")}}

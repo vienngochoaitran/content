@@ -55,7 +55,7 @@ coerce the string `"foo"` into a symbol. It creates a new symbol each time:
 Symbol('foo') === Symbol('foo')  // false
 ```
 
-### new Symbol(...)
+### new Symbol()
 
 The following syntax with the {{jsxref("Operators/new", "new")}} operator will throw a
 {{jsxref("TypeError")}}:
@@ -89,5 +89,4 @@ typeof symObj // => "object"
 
 ## See also
 
-- A polyfill of `Symbol` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-symbol)
-- [Glossary: Symbol data type](/en-US/docs/Glossary/Symbol)
+- [Polyfill of `Symbol` in `core-js`](https://github.com/zloirock/core-js#ecmascript-symbol)

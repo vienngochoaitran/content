@@ -16,16 +16,17 @@ operator that returns its right-hand side operand when its left-hand side operan
 {{jsxref("null")}} or {{jsxref("undefined")}}, and otherwise returns its left-hand side
 operand.
 
-This can be contrasted with the [logical OR
-(`||`) operator](/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR), which returns the right-hand side operand if the left
+This can be seen as a special case of the [logical OR (`||`) operator](/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR),
+which returns the right-hand side operand if the left
 operand is _any_ {{Glossary("falsy")}} value, not only `null` or `undefined`. In other words,
 if you use `||` to provide some default value to another variable
 `foo`, you may encounter unexpected behaviors if you consider some falsy
 values as usable (e.g., `''` or `0`). See below for more examples.
 
-The nullish coalescing operator has the fifth-lowest [operator
-precedence](/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), directly lower than `||` and directly higher than the [conditional
-(ternary) operator](/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
+The nullish coalescing operator has the fifth-lowest
+[operator precedence](/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence),
+directly lower than `||` and directly higher than the
+[conditional (ternary) operator](/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
 
 {{EmbedInteractiveExample("pages/js/expressions-nullishcoalescingoperator.html")}}
 
@@ -69,7 +70,7 @@ let foo;
 let someDummyText = foo || 'Hello!';
 ```
 
-However, due to `||` being a boolean logical operator, the left hand-side
+However, due to `||` being a boolean logical operator, the left-hand-side
 operand was coerced to a boolean for the evaluation and any _falsy_ value
 (`0`, `''`, `NaN`, `null`,
 `undefined`) was not returned. This behavior may cause unexpected
@@ -110,11 +111,11 @@ function A() { console.log('A was called'); return undefined;}
 function B() { console.log('B was called'); return false;}
 function C() { console.log('C was called'); return "foo";}
 
-console.log( A() ?? C() );
+console.log(A() ?? C());
 // logs "A was called" then "C was called" and then "foo"
 // as A() returned undefined so both expressions are evaluated
 
-console.log( B() ?? C() );
+console.log(B() ?? C());
 // logs "B was called" then "false"
 // as B() returned false (and not null or undefined), the right
 // hand side expression was not evaluated
@@ -140,10 +141,9 @@ However, providing parenthesis to explicitly indicate precedence is correct:
 
 ### Relationship with the optional chaining operator (`?.`)
 
-The nullish coalescing operator treats `undefined` and `null` as
-specific values and so does the [optional
-chaining operator (`?.`)](/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) which is useful to access a property of an
-object which may be `null` or `undefined`.
+The nullish coalescing operator treats `undefined` and `null` as specific values and so does the
+[optional chaining operator (`?.`)](/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+which is useful to access a property of an object which may be `null` or `undefined`.
 
 ```js
 let foo = { someFooProp: "hi" };

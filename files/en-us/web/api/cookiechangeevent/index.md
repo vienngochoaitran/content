@@ -1,16 +1,18 @@
 ---
 title: CookieChangeEvent
 slug: Web/API/CookieChangeEvent
+page-type: web-api-interface
 tags:
   - API
   - Interface
   - Reference
   - CookieChangeEvent
+  - Experimental
 browser-compat: api.CookieChangeEvent
 ---
-{{securecontext_header}}{{DefaultAPISidebar("Cookie Store")}}
+{{securecontext_header}}{{APIRef("Cookie Store API")}}{{SeeCompatTable}}
 
-The **`CookieChangeEvent`** interface of the {{domxref('Cookie Store API')}} is the event type passed to {{domxref("CookieStore.onchange()")}} when any cookie changes have occurred. A cookie change consists of a cookie and a type (either "changed" or "deleted").
+The **`CookieChangeEvent`** interface of the ['Cookie Store API'](/en-US/docs/Web/API/Cookie_Store_API) is the event type passed to {{domxref("CookieStore.onchange()")}} when any cookie changes occur. A cookie change consists of a cookie and a type (either "changed" or "deleted").
 
 Cookie changes that will cause the `CookieChangeEvent` to be dispatched are:
 
@@ -20,18 +22,20 @@ Cookie changes that will cause the `CookieChangeEvent` to be dispatched are:
 
 > **Note:** A cookie that is replaced due to the insertion of another cookie with the same name, domain, and path, is ignored and does not trigger a change event.
 
+{{InheritanceDiagram}}
+
 ## Constructor
 
-- {{domxref("CookieChangeEvent.CookieChangeEvent()")}}
+- {{domxref("CookieChangeEvent.CookieChangeEvent", "CookieChangeEvent()")}}
   - : Creates a new `CookieChangeEvent`.
 
 ## Properties
 
 _This interface also inherits properties from {{domxref("Event")}}._
 
-- {{domxref("CookieChangeEvent.changed")}}{{ReadOnlyInline}}
+- {{domxref("CookieChangeEvent.changed")}} {{ReadOnlyInline}}
   - : Returns an array containing one or more changed cookies.
-- {{domxref("CookieChangeEvent.deleted")}}{{ReadOnlyInline}}
+- {{domxref("CookieChangeEvent.deleted")}} {{ReadOnlyInline}}
   - : Returns an array containing one or more deleted cookies.
 
 ## Examples

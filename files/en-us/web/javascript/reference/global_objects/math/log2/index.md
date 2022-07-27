@@ -71,18 +71,6 @@ created (`Math` is not a constructor).
 This function is the equivalent of Math.log(x) / Math.log(2). For log2(e) use the
 constant {{jsxref("Math.LOG2E")}} which is 1 / {{jsxref("Math.LN2")}}.
 
-## Polyfill
-
-This Polyfill emulates the `Math.log2` function. Note that it returns
-imprecise values on some inputs (like 1 << 29), wrap into
-{{jsxref("Math.round()")}} if working with bit masks.
-
-```js
-if (!Math.log2) Math.log2 = function(x) {
-  return Math.log(x) * Math.LOG2E;
-};
-```
-
 ## Examples
 
 ### Using Math.log2()
@@ -106,7 +94,7 @@ Math.log2(1024); // 10
 
 ## See also
 
-- A polyfill of `Math.log2` is available in [`core-js`](https://github.com/zloirock/core-js#ecmascript-math)
+- [Polyfill of `Math.log2` in `core-js`](https://github.com/zloirock/core-js#ecmascript-math)
 - {{jsxref("Math.exp()")}}
 - {{jsxref("Math.log()")}}
 - {{jsxref("Math.log10()")}}

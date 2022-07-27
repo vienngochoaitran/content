@@ -7,11 +7,10 @@ tags:
   - JavaScript
   - Method
   - Reference
-  - Experimental
   - supportedValuesOf
 browser-compat: javascript.builtins.Intl.supportedValuesOf
 ---
-{{JSRef}} {{SeeCompatTable}}
+{{JSRef}}
 
 The **`Intl.supportedValuesOf()`** method returns an array containing the supported calendar, collation, currency, numbering systems, or unit values supported by the implementation.
 
@@ -20,7 +19,7 @@ Duplicates are omitted and the array is sorted in ascending alphabetic order (or
 The method can be used to feature-test whether values are supported in a particular implementation and download a polyfill only if necessary.
 It can also be used to build UIs that allow users to select their preferred localized values, for example when the UI is created from WebGL or server-side.
 
-{{EmbedInteractiveExample("pages/js/intl-supportedvaluesof.html")}}
+{{EmbedInteractiveExample("pages/js/intl-supportedvaluesof.html", "taller")}}
 
 <!-- The source for this interactive example is stored in a GitHub repository. If you'd like to contribute to the interactive examples project, please clone https://github.com/mdn/interactive-examples and send us a pull request. -->
 
@@ -52,7 +51,7 @@ A sorted array of unique string values indicating the values supported by the im
 You can check that the method is supported by comparing to `undefined`:
 
 ```js
-if (typeof Intl.supportedValuesOf !== 'undefined') { 
+if (typeof Intl.supportedValuesOf !== 'undefined') {
   //method is supported
 }
 ```
@@ -60,11 +59,11 @@ if (typeof Intl.supportedValuesOf !== 'undefined') {
 ### Get all values for key
 
 To get the supported values for calendar you call the method with the key `"calendar"`.
-YOu can then iterate through the returned array as shown below:
+You can then iterate through the returned array as shown below:
 
 ```js
 Intl.supportedValuesOf("calendar").forEach(function(calendar) {
-   // "buddhist", "chinese", "coptic", "dangi", ...
+   // "buddhist", "chinese", "coptic", "dangi", etc.
 });
 ```
 
@@ -74,23 +73,23 @@ The other values are all obtained in the same way:
 
 ```js
 Intl.supportedValuesOf("collation").forEach(function(collation) {
-   // "big5han", "compat", "dict", "emoji", ...
+   // "big5han", "compat", "dict", "emoji", etc.
 });
 
 Intl.supportedValuesOf("currency").forEach(function(currency) {
-   // "ADP", "AED", "AFA", "AFN", "ALK", "ALL", "AMD", ...
+   // "ADP", "AED", "AFA", "AFN", "ALK", "ALL", "AMD", etc.
 });
 
 Intl.supportedValuesOf("numberingSystem").forEach(function(numberingSystem) {
-   // "adlm", "ahom", "arab", "arabext", "bali", ...
+   // "adlm", "ahom", "arab", "arabext", "bali", etc.
 });
 
 Intl.supportedValuesOf("timeZone").forEach(function(timeZone) {
-   // "Africa/Abidjan", "Africa/Accra", "Africa/Addis_Ababa", "Africa/Algiers", ...
+   // "Africa/Abidjan", "Africa/Accra", "Africa/Addis_Ababa", "Africa/Algiers", etc.
 });
 
 Intl.supportedValuesOf("unit").forEach(function(unit) {
-   // "acre", "bit", "byte", "celsius", "centimeter", ...
+   // "acre", "bit", "byte", "celsius", "centimeter", etc.
 });
 ```
 
@@ -104,10 +103,6 @@ try {
 }
 ```
 
-## Polyfill
-
-[Intl.supportedValuesOf() polyfill in proposal TC39](https://github.com/tc39/proposal-intl-enumeration/tree/master/polyfill)
-
 ## Specifications
 
 {{Specifications}}
@@ -119,3 +114,4 @@ try {
 ## See also
 
 - {{jsxref("Global_Objects/Intl", "Intl")}}
+- [A polyfill of `Intl.supportedValuesOf` in FormatJS](https://github.com/formatjs/formatjs/tree/main/packages/intl-enumerator)

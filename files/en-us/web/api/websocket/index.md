@@ -1,6 +1,7 @@
 ---
 title: WebSocket
 slug: Web/API/WebSocket
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -16,6 +17,8 @@ The `WebSocket` object provides the API for creating and managing a [WebSocket](
 To construct a `WebSocket`, use the [`WebSocket()`](/en-US/docs/Web/API/WebSocket/WebSocket) constructor.
 
 {{AvailableInWorkers}}
+
+{{InheritanceDiagram}}
 
 ## Constructor
 

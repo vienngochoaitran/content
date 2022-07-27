@@ -18,7 +18,7 @@ browser-compat: html.elements.link
 The **`<link>`** [HTML](/en-US/docs/Web/HTML) element specifies relationships between the current document and an external resource.
 This element is most commonly used to link to {{Glossary("CSS", "stylesheets")}}, but is also used to establish site icons (both "favicon" style icons and icons for the home screen and apps on mobile devices) among other things.
 
-{{EmbedInteractiveExample("pages/tabbed/link.html")}}
+{{EmbedInteractiveExample("pages/tabbed/link.html", "tabbed-shorter")}}
 
 To link an external stylesheet, you'd include a `<link>` element inside your {{HTMLElement("head")}} like this:
 
@@ -184,6 +184,17 @@ This element includes the [global attributes](/en-US/docs/Web/HTML/Global_attrib
 
     Setting the `disabled` property in the DOM causes the stylesheet to be removed from the document's {{domxref("Document.styleSheets")}} list.
 
+- {{htmlattrdef("fetchpriority")}}
+
+  - : Provides a hint of the relative priority to use when fetching a preloaded resource. Allowed values:
+
+    - `high`
+      - : Signals a high-priority fetch relative to other resources of the same type.
+    - `low`
+      - : Signals a low-priority fetch relative to other resources of the same type.
+    - `auto`
+      - : Default: Signals automatic determination of fetch priority relative to other resources of the same type.
+
 - {{HTMLAttrDef("href")}}
   - : This attribute specifies the {{glossary("URL")}} of the linked resource. A URL can be absolute or relative.
 - {{HTMLAttrDef("hreflang")}}
@@ -196,7 +207,7 @@ This element includes the [global attributes](/en-US/docs/Web/HTML/Global_attrib
 - {{HTMLAttrDef("imagesrcset")}}
   - : For `rel="preload"` and `as="image"` only, the `imagesrcset` attribute is [a sourceset attribute](https://html.spec.whatwg.org/multipage/images.html#srcset-attribute) that indicates to preload the appropriate resource used by an `img` element with corresponding values for its `srcset` and `sizes` attributes.
 - {{HTMLAttrDef("integrity")}} {{Experimental_Inline}}
-  - : Contains inline metadata — a base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch.
+  - : Contains inline metadata — a base64-encoded cryptographic hash of the resource (file) you're telling the browser to fetch.
     The browser can use this to verify that the fetched resource has been delivered free of unexpected manipulation.
     See [Subresource Integrity](/en-US/docs/Web/Security/Subresource_Integrity).
 - {{HTMLAttrDef("media")}}
@@ -219,7 +230,7 @@ This element includes the [global attributes](/en-US/docs/Web/HTML/Global_attrib
 
     - `no-referrer` means that the {{HTTPHeader("Referer")}} header will not be sent.
     - `no-referrer-when-downgrade` means that no {{HTTPHeader("Referer")}} header will be sent when navigating to an origin without TLS (HTTPS).
-      This is a user agent’s default behavior, if no policy is otherwise specified.
+      This is a user agent's default behavior, if no policy is otherwise specified.
     - `origin` means that the referrer will be the origin of the page, which is roughly the scheme, the host, and the port.
     - `origin-when-cross-origin` means that navigating to other origins will be limited to the scheme, the host, and the port, while navigating on the same origin will include the referrer's path.
     - `unsafe-url` means that the referrer will include the origin and the path (but not the fragment, password, or username).

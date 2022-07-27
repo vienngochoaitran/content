@@ -1,6 +1,7 @@
 ---
 title: IDBCursor.request
 slug: Web/API/IDBCursor/request
+page-type: web-api-instance-property
 tags:
   - API
   - Database
@@ -14,17 +15,11 @@ browser-compat: api.IDBCursor.request
 ---
 {{APIRef("IndexedDB")}}
 
-The **`request`** read-only property of the {{domxref("IDBCursor")}} interface returns the {{domxref("IDBRequest")}} used to obtain the cursor.
+The **`request`** read-only property of the {{domxref("IDBCursor")}} interface returns the {{domxref("IDBRequest")}} used to obtain the cursor.
 
 {{AvailableInWorkers}}
 
-## Syntax
-
-```js
-IDBCursor.request;
-```
-
-### Value
+## Value
 
 An {{domxref("IDBRequest")}} object instance.
 
@@ -44,7 +39,7 @@ function displayData() {
     const cursor = event.target.result;
       if(cursor) {
         const listItem = document.createElement('li');
-        listItem.innerHTML = '<strong>' + cursor.value.albumTitle + '</strong>, ' + cursor.value.year;
+        listItem.textContent = `${cursor.value.albumTitle}, ${cursor.value.year}`;
         list.appendChild(listItem);
         console.log(cursor.request);
         cursor.continue();

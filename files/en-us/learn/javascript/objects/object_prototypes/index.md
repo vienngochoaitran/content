@@ -72,10 +72,10 @@ toValueOf
 Try accessing one of them:
 
 ```js
-myObject.hasOwnProperty('city'); // true
+myObject.toString(); // "[object Object]"
 ```
 
-It works (even if it's not obvious yet what `hasOwnProperty()` does).
+It works (even if it's not obvious what `toString()` does).
 
 What are these extra properties, and where do they come from?
 
@@ -85,16 +85,16 @@ Every object in JavaScript has a built-in property, which is called its **protot
 
 When you try to access a property of an object: if the property can't be found in the object itself, the prototype is searched for the property. If the property still can't be found, then the prototype's prototype is searched, and so on until either the property is found, or the end of the chain is reached, in which case `undefined` is returned.
 
-So when we call `myObject.hasOwnProperty('city')`, the browser:
+So when we call `myObject.toString()`, the browser:
 
-* looks for `hasOwnProperty` in `myObject`
-* can't find it there, so looks in the prototype object for `myObject`
-* finds it there, and calls it.
+- looks for `toString` in `myObject`
+- can't find it there, so looks in the prototype object of `myObject` for `toString`
+- finds it there, and calls it.
 
 What is the prototype for `myObject`? To find out, we can use the function `Object.getPrototypeOf()`:
 
 ```js
-Object.getPrototypeOf(myObject); // Object {...}
+Object.getPrototypeOf(myObject); // Object { }
 ```
 
 This is an object called `Object.prototype`, and it is the most basic prototype, that all objects have by default. The prototype of `Object.prototype` is `null`, so it's at the end of the prototype chain:
@@ -113,7 +113,7 @@ do {
 } while (object);
 
 // Date.prototype
-// Object {...}
+// Object { }
 // null
 ```
 
@@ -137,7 +137,7 @@ myDate.getYear = function() {
   console.log('something else!')
 };
 
-console.log(myDate.getYear()); // 'something else!'
+myDate.getYear(); // 'something else!'
 ```
 
 This should be predictable, given the description of the prototype chain. When we call `getYear()` the browser first looks in `myDate` for a property with that name, and only checks the prototype if `myDate` does not define it. So when we add `getYear()` to `myDate`, then the version in `myDate` is called.
@@ -184,21 +184,19 @@ function Person(name) {
   this.name = name;
 }
 
-Person.prototype = personPrototype;
-Person.prototype.constructor = Person;
+Object.assign(Person.prototype, personPrototype);
+// or
+// Person.prototype.greet = personPrototype.greet;
 ```
 
 Here we create:
 
-* an object `personPrototype`, which has a `greet()` method
-* a `Person()` constructor function which initializes the name of the person to create.
+- an object `personPrototype`, which has a `greet()` method
+- a `Person()` constructor function which initializes the name of the person to create.
 
-We then set the `Person` function's `prototype` property to point to `personPrototype`.
+We then put the methods defined in `personPrototype` onto the `Person` function's `prototype` property using [Object.assign](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
-The last line (`Person.prototype.constructor = Person;`) sets the prototype's `constructor` property to the function used to create `Person` objects.
-This is required because after setting `Person.prototype = personPrototype;` the property points to the constructor for the `personPrototype`, which is `Object` rather than `Person` (because `personPrototype` was constructed as an object literal).
-
-After this code, objects created using `Person()` will get `personPrototype` as their prototype.
+After this code, objects created using `Person()` will get `Person.prototype` as their prototype, which automatically contains the `greet` method.
 
 ```js
 const reuben = new Person('Reuben');
@@ -211,12 +209,12 @@ This also explains why we said earlier that the prototype of `myDate` is called 
 
 The objects we create using the `Person` constructor above have two properties:
 
-* a `name` property, which is set in the constructor, so it appears directly on `Person` objects
-* a `greet()` method, which is set in the prototype.
+- a `name` property, which is set in the constructor, so it appears directly on `Person` objects
+- a `greet()` method, which is set in the prototype.
 
 It's common to see this pattern, in which methods are defined on the prototype, but data properties are defined in the constructor. That's because methods are usually the same for every object we create, while we often want each object to have its own value for its data properties (just as here where every person has a different name).
 
-Properties that are defined directly in the object, like `name` here, are called **own properties**, and you can check whether a property is an own property using the static  {{jsxref("Object/hasOwn", "Object.hasOwn()")}} method:
+Properties that are defined directly in the object, like `name` here, are called **own properties**, and you can check whether a property is an own property using the static {{jsxref("Object/hasOwn", "Object.hasOwn()")}} method:
 
 ```js
 const irma = new Person('Irma');

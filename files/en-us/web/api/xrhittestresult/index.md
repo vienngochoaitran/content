@@ -1,6 +1,7 @@
 ---
 title: XRHitTestResult
 slug: Web/API/XRHitTestResult
+page-type: web-api-interface
 tags:
   - API
   - Interface
@@ -13,7 +14,7 @@ browser-compat: api.XRHitTestResult
 ---
 {{APIRef("WebXR Device API")}} {{secureContext_header}}
 
-The **`XRHitTestResult`** interface of the [WebXR Device API](/en-US/docs/Web/API/WebXR_Device_API) contains a single result of a hit test. You can get an array of `XRHitTestResult` objects for a frame by calling {{domxref("XRFrame.getHitTestResults()")}}.
+The **`XRHitTestResult`** interface of the [WebXR Device API](/en-US/docs/Web/API/WebXR_Device_API) contains a single result of a hit test. You can get an array of `XRHitTestResult` objects for a frame by calling {{domxref("XRFrame.getHitTestResults()")}}.
 
 ## Properties
 
@@ -74,7 +75,7 @@ Once you find intersections on real-world surfaces using hit testing, you can cr
 hitTestResult.createAnchor().then((anchor) => {
   // add anchored objects to the scene
 }, (error) => {
-  console.error("Could not create anchor: " + error);
+  console.error(`Could not create anchor: ${error}`);
 });
 ```
 

@@ -1,6 +1,7 @@
 ---
 title: XRCompositionLayer
 slug: Web/API/XRCompositionLayer
+page-type: web-api-interface
 tags:
   - API
   - AR
@@ -29,6 +30,8 @@ Several layer types inherit from `XRCompositionLayer`:
 
 `XRCompositionLayer` itself inherits from the general {{domxref("XRLayer")}} class (which inherits from {{domxref("EventTarget")}}).
 
+{{InheritanceDiagram}}
+
 ## Properties
 
 - {{domxref("XRCompositionLayer.blendTextureSourceAlpha")}}
@@ -40,7 +43,7 @@ Several layer types inherit from `XRCompositionLayer`:
 - {{domxref("XRCompositionLayer.mipLevels")}} {{ReadOnlyInline}}
   - : The number of mip levels in the color and texture data for the layer.
 - {{domxref("XRCompositionLayer.needsRedraw")}} {{ReadOnlyInline}}
-  - : A boolean signaling that the layer should be rerendered in the next frame.
+  - : A boolean signaling that the layer should be re-rendered in the next frame.
 
 ## Methods
 

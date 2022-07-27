@@ -18,7 +18,7 @@ If an HTTP response includes the {{HTTPHeader("Accept-Ranges")}} header and its 
 curl -I http://i.imgur.com/z4d4kWk.jpg
 
 HTTP/1.1 200 OK
-...
+…
 Accept-Ranges: bytes
 Content-Length: 146515
 ```
@@ -31,7 +31,7 @@ If sites omit the `Accept-Ranges` header, they likely don't support partial requ
 curl -I https://www.youtube.com/watch?v=EwTZ2xpQwpA
 
 HTTP/1.1 200 OK
-...
+…
 Accept-Ranges: none
 ```
 
@@ -63,7 +63,7 @@ The server responses with the {{HTTPStatus("206")}} `Partial Content` status:
 HTTP/1.1 206 Partial Content
 Content-Range: bytes 0-1023/146515
 Content-Length: 1024
-...
+…
 (binary content)
 ```
 
@@ -120,10 +120,10 @@ There are three relevant statuses, when working with range requests:
 
 ## Comparison to chunked `Transfer-Encoding`
 
-The {{HTTPHeader("Transfer-Encoding")}} header allows chunked encoding, which is useful when larger amounts of data are sent to the client and the total size of the response is not known until the request has been fully processed. The server sends data to the client straight away without buffering the response or determining the exact length, which leads to improved latency. Range requests and chunking are compatible and can be used with or without each other.
+The {{HTTPHeader("Transfer-Encoding")}} header allows chunked encoding, which is useful when larger amounts of data are sent to the client and the total size of the response is not known until the request has been fully processed. The server sends data to the client straight away without buffering the response or determining the exact length, which leads to improved latency. Range requests and chunking are compatible and can be used with or without each other.
 
 ## See also
 
 - Related status codes {{HTTPStatus("200")}}, {{HTTPStatus("206")}}, {{HTTPStatus("416")}}.
 - Related headers: {{HTTPHeader("Accept-Ranges")}}, {{HTTPHeader("Range")}}, {{HTTPHeader("Content-Range")}}, {{HTTPHeader("If-Range")}}, {{HTTPHeader("Transfer-Encoding")}}.
-- [Download resumption in Internet Explorer](https://blogs.msdn.microsoft.com/ieinternals/2011/06/03/download-resumption-in-internet-explorer/)
+- [Download resumption in Internet Explorer](https://docs.microsoft.com/en-us/archive/blogs/ieinternals/download-resumption-in-internet-explorer)
